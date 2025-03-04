@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:remember_demos/demos/folders_with_priority.dart';
+import 'package:remember_demos/demos/folders_with_priority_unassigned_on_top.dart';
 import 'package:remember_demos/demos/tasks_with_priority.dart';
 import 'package:remember_demos/text_styles.dart';
 
@@ -41,6 +42,18 @@ class _HomePageState extends State<HomePage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (_) => FoldersWithPriority()),
+                );
+              },
+            ),
+            const SizedBox(height: 16),
+            ElevatedButton(
+              child: Text("Folders with Priority (Unscheduled at the top)"),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => FoldersWithPriorityUnscheduledOnTop(),
+                  ),
                 );
               },
             ),

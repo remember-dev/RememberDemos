@@ -3,14 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:remember_demos/text_styles.dart';
 import 'package:remember_demos/widgets/task_row.dart';
 
-class FoldersWithPriority extends StatefulWidget {
-  const FoldersWithPriority({super.key});
+class FoldersWithPriorityUnscheduledOnTop extends StatefulWidget {
+  const FoldersWithPriorityUnscheduledOnTop({super.key});
 
   @override
-  State<FoldersWithPriority> createState() => _FoldersWithPriorityState();
+  State<FoldersWithPriorityUnscheduledOnTop> createState() =>
+      _FoldersWithPriorityUnscheduledOnTopState();
 }
 
-class _FoldersWithPriorityState extends State<FoldersWithPriority> {
+class _FoldersWithPriorityUnscheduledOnTopState
+    extends State<FoldersWithPriorityUnscheduledOnTop> {
   List<List<TaskRow>> lists = [
     [
       TaskRow(title: "Charlotte's Web", color: colors[1], priority: 0),
@@ -47,6 +49,25 @@ class _FoldersWithPriorityState extends State<FoldersWithPriority> {
           onItemReorder: onReorderLists,
           onListReorder: (_, __) {},
           children: [
+            // The Unscheduled
+            DragAndDropList(
+              canDrag: false,
+              header: ElevatedButton(
+                onPressed: () {},
+                child: Text(
+                  "Unscheduled",
+                  style: MOS.copyWith(fontSize: 18),
+                ),
+              ),
+              children: unscheduledTasks
+                  .map((t) => DragAndDropItem(
+                          child: Padding(
+                        padding: const EdgeInsets.fromLTRB(12, 0, 36, 0),
+                        child: t,
+                      )))
+                  .toList(),
+            ),
+
             // The Books
             DragAndDropList(
               canDrag: false,
@@ -77,25 +98,6 @@ class _FoldersWithPriorityState extends State<FoldersWithPriority> {
                 ),
               ),
               children: moviesTasks
-                  .map((t) => DragAndDropItem(
-                          child: Padding(
-                        padding: const EdgeInsets.fromLTRB(12, 0, 36, 0),
-                        child: t,
-                      )))
-                  .toList(),
-            ),
-
-            // The Unscheduled
-            DragAndDropList(
-              canDrag: false,
-              header: ElevatedButton(
-                onPressed: () {},
-                child: Text(
-                  "Unscheduled",
-                  style: MOS.copyWith(fontSize: 18),
-                ),
-              ),
-              children: unscheduledTasks
                   .map((t) => DragAndDropItem(
                           child: Padding(
                         padding: const EdgeInsets.fromLTRB(12, 0, 36, 0),
