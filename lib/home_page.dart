@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:remember_demos/demos/folders_with_priority.dart';
 import 'package:remember_demos/demos/folders_with_priority_unassigned_on_top.dart';
 import 'package:remember_demos/demos/tasks_with_priority.dart';
+import 'package:remember_demos/demos/tasks_with_priority_reorderable.dart';
 import 'package:remember_demos/text_styles.dart';
 
 class HomePage extends StatefulWidget {
@@ -27,11 +28,21 @@ class _HomePageState extends State<HomePage> {
             Text("Click the buttons below to see the demos."),
             const SizedBox(height: 32),
             ElevatedButton(
-              child: Text("Tasks with Priority (no folders)"),
+              child: Text("Tasks with Priority (no folders) (Reorderable)"),
               onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (_) => TasksWithPriority()),
+                );
+              },
+            ),
+            const SizedBox(height: 16),
+            ElevatedButton(
+              child: Text("Tasks with Priority (no folders) (Drag&Drop)"),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => TasksWithPriorityDD()),
                 );
               },
             ),

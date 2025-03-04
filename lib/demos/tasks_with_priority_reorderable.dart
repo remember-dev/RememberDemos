@@ -1,14 +1,15 @@
+import 'package:drag_and_drop_lists/drag_and_drop_lists.dart';
 import 'package:flutter/material.dart';
 import 'package:remember_demos/widgets/task_row.dart';
 
-class TasksWithPriority extends StatefulWidget {
-  const TasksWithPriority({super.key});
+class TasksWithPriorityDD extends StatefulWidget {
+  const TasksWithPriorityDD({super.key});
 
   @override
-  State<TasksWithPriority> createState() => _TasksWithPriorityState();
+  State<TasksWithPriorityDD> createState() => _TasksWithPriorityDDState();
 }
 
-class _TasksWithPriorityState extends State<TasksWithPriority> {
+class _TasksWithPriorityDDState extends State<TasksWithPriorityDD> {
   List<TaskRow> tasks = List.generate(10, (i) => randomTaskRow(ValueKey(i)))
     ..sort((t1, t2) => t1.priority - t2.priority);
 
@@ -17,17 +18,17 @@ class _TasksWithPriorityState extends State<TasksWithPriority> {
     return Scaffold(
       appBar: AppBar(),
       body: Padding(
-        padding: const EdgeInsets.fromLTRB(12, 12, 36, 12),
+        padding: const EdgeInsets.fromLTRB(12, 12, 12, 12),
         child: Center(
-          child: ReorderableListView.builder(
-            buildDefaultDragHandles: false,
-            itemCount: tasks.length,
-            itemBuilder: (_, i) => ReorderableDragStartListener(
-              key: ValueKey(i),
-              index: i,
-              child: tasks[i],
-            ),
-            onReorder: onReorder,
+          child: DragAndDropLists(
+            children: [
+              DragAndDropList(
+                canDrag: false,
+                children: tasks.map((t) => DragAndDropItem(child: t)).toList(),
+              ),
+            ],
+            onListReorder: (_, __) {},
+            onItemReorder: (start, _, end, __) => onReorder(start, end),
           ),
         ),
       ),
