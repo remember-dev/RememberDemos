@@ -81,10 +81,7 @@ class TaskRow extends StatelessWidget {
         child: ListTile(
           tileColor: Colors.white,
           title: Text(title),
-          trailing: Padding(
-            padding: const EdgeInsets.only(right: 12),
-            child: _priorityLabel(),
-          ),
+          trailing: _priorityLabel(),
         ),
       ),
     );
