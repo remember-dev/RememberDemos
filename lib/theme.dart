@@ -11,6 +11,8 @@ class RememberColors {
   static const Color xDark = Color(0xFF323232);
   static const Color xxDark = Color(0xFF242426);
   static const Color black = Colors.black;
+
+  static const Color lightBlue = Color(0xFF007AFF);
 }
 
 ThemeData getTheme(String font) {

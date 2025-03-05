@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:remember_demos/demos/folders_with_priority.dart';
 import 'package:remember_demos/demos/folders_with_priority_unassigned_on_top.dart';
+import 'package:remember_demos/demos/home_screen_1.dart';
 import 'package:remember_demos/demos/tasks_with_priority.dart';
 import 'package:remember_demos/demos/tasks_with_priority_reorderable.dart';
 import 'package:remember_demos/settings_page.dart';
@@ -32,7 +33,7 @@ class _HomePageState extends State<HomePage> {
             ),
             const Spacer(),
             Image.asset("assets/typographic-logo.png"),
-            const SizedBox(height: 64),
+            const SizedBox(height: 32),
             Text(
               "Welcome to Remember Demos!",
               style: semiBoldSecondary.copyWith(fontSize: 16),
@@ -43,6 +44,21 @@ class _HomePageState extends State<HomePage> {
               style: mediumPrimary,
             ),
             const SizedBox(height: 32),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24),
+              child: const Divider(color: Color.fromARGB(255, 13, 81, 199)),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "Folders and Prioritization",
+                  style: semiBoldSecondary.copyWith(fontSize: 16),
+                ),
+              ),
+            ),
+            const SizedBox(height: 16),
             ElevatedButton(
               child: Text("Tasks with Priority (no folders) (Reorderable)"),
               onPressed: () {
@@ -80,6 +96,33 @@ class _HomePageState extends State<HomePage> {
                   context,
                   MaterialPageRoute(
                     builder: (_) => FoldersWithPriorityUnscheduledOnTop(),
+                  ),
+                );
+              },
+            ),
+            const SizedBox(height: 16),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24),
+              child: const Divider(color: Color.fromARGB(255, 13, 81, 199)),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "Home Screen",
+                  style: semiBoldSecondary.copyWith(fontSize: 16),
+                ),
+              ),
+            ),
+            const SizedBox(height: 16),
+            ElevatedButton(
+              child: Text("Home Screen as of March 5 2025"),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => HomeScreen1(),
                   ),
                 );
               },

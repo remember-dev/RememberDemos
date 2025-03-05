@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:remember_demos/entities/basic_task.dart';
 import 'package:remember_demos/text_styles.dart';
 
 const colors = [
@@ -56,6 +57,14 @@ class TaskRow extends StatelessWidget {
     required this.color,
     required this.priority,
   });
+
+  static TaskRow fromBasicTask(BasicTask task) {
+    return TaskRow(
+      title: task.taskTitle,
+      color: task.color,
+      priority: task.priority,
+    );
+  }
 
   TaskRow copyWith({
     String? title,
