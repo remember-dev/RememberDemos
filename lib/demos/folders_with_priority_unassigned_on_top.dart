@@ -37,8 +37,8 @@ class _FoldersWithPriorityUnscheduledOnTopState
   ];
 
   List<TaskRow> get unscheduledTasks => lists[0];
-  List<TaskRow> get booksTasks => lists[2];
-  List<TaskRow> get moviesTasks => lists[1];
+  List<TaskRow> get booksTasks => lists[1];
+  List<TaskRow> get moviesTasks => lists[2];
 
   @override
   Widget build(BuildContext context) {
