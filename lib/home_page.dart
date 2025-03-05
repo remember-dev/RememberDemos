@@ -3,6 +3,7 @@ import 'package:remember_demos/demos/folders_with_priority.dart';
 import 'package:remember_demos/demos/folders_with_priority_unassigned_on_top.dart';
 import 'package:remember_demos/demos/tasks_with_priority.dart';
 import 'package:remember_demos/demos/tasks_with_priority_reorderable.dart';
+import 'package:remember_demos/settings_page.dart';
 import 'package:remember_demos/text_styles.dart';
 
 class HomePage extends StatefulWidget {
@@ -17,6 +18,18 @@ class _HomePageState extends State<HomePage> {
       body: Center(
         child: Column(
           children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                IconButton(
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (_) => SettingsPage()));
+                  },
+                  icon: Icon(Icons.settings),
+                ),
+              ],
+            ),
             const Spacer(),
             Image.asset("assets/typographic-logo.png"),
             const SizedBox(height: 64),
