@@ -13,71 +13,73 @@ class RememberColors {
   static const Color black = Colors.black;
 }
 
-ThemeData theme = ThemeData(
-  fontFamily: 'Metropolis',
-  colorScheme: const ColorScheme(
-    brightness: Brightness.light,
-    primary: Color(0xFF202020),
-    onPrimary: Color(0xFFBBBBBB),
-    secondary: Color(0xFFBBBBBB),
-    onSecondary: RememberColors.light,
-    error: Color(0xFFF32424),
-    onError: Color(0xFFF32424),
-    shadow: Colors.transparent,
-    surface: RememberColors.light,
-    onSurface: Colors.black,
-  ),
-  appBarTheme: const AppBarTheme(
-    backgroundColor: RememberColors.light,
-  ),
-  cardTheme: const CardTheme(
-    color: RememberColors.light,
-  ),
-  bottomAppBarTheme: const BottomAppBarTheme(
-    color: RememberColors.white,
-    surfaceTintColor: RememberColors.light,
-  ),
-  checkboxTheme: CheckboxThemeData(
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(6),
-      side: BorderSide.none,
+ThemeData getTheme(String font) {
+  return ThemeData(
+    fontFamily: font,
+    colorScheme: const ColorScheme(
+      brightness: Brightness.light,
+      primary: Color(0xFF202020),
+      onPrimary: Color(0xFFBBBBBB),
+      secondary: Color(0xFFBBBBBB),
+      onSecondary: RememberColors.light,
+      error: Color(0xFFF32424),
+      onError: Color(0xFFF32424),
+      shadow: Colors.transparent,
+      surface: RememberColors.light,
+      onSurface: Colors.black,
     ),
-    materialTapTargetSize: MaterialTapTargetSize.padded,
-    splashRadius: 1.0,
-    visualDensity: VisualDensity.standard,
-  ),
-  drawerTheme: const DrawerThemeData(
-    backgroundColor: RememberColors.white,
-    shape: RoundedRectangleBorder(),
-  ),
-  navigationBarTheme: NavigationBarThemeData(
-    indicatorColor: Colors.white,
-    backgroundColor: Colors.black,
-    surfaceTintColor: Colors.white,
-    shadowColor: Colors.white,
-    labelTextStyle: WidgetStateProperty.resolveWith((state) {
-      if (state.contains(WidgetState.selected)) {
-        return const TextStyle(color: Colors.black);
-      }
-      return const TextStyle(color: Colors.white);
-    }),
-  ),
-  elevatedButtonTheme: ElevatedButtonThemeData(
-    style: ButtonStyle(
-      backgroundColor: WidgetStateProperty.all<Color>(Colors.white),
-      surfaceTintColor: WidgetStateProperty.all<Color>(Colors.white),
-      elevation: WidgetStateProperty.all<double>(10.0),
-      shape: WidgetStateProperty.all<RoundedRectangleBorder>(
-        RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(300.0),
-          side: const BorderSide(color: Colors.black, width: 3.0),
-        ),
+    appBarTheme: const AppBarTheme(
+      backgroundColor: RememberColors.light,
+    ),
+    cardTheme: const CardTheme(
+      color: RememberColors.light,
+    ),
+    bottomAppBarTheme: const BottomAppBarTheme(
+      color: RememberColors.white,
+      surfaceTintColor: RememberColors.light,
+    ),
+    checkboxTheme: CheckboxThemeData(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(6),
+        side: BorderSide.none,
       ),
-      textStyle: WidgetStateProperty.all<TextStyle>(
-          TextStyle(fontWeight: FontWeight.bold)),
+      materialTapTargetSize: MaterialTapTargetSize.padded,
+      splashRadius: 1.0,
+      visualDensity: VisualDensity.standard,
     ),
-  ),
-);
+    drawerTheme: const DrawerThemeData(
+      backgroundColor: RememberColors.white,
+      shape: RoundedRectangleBorder(),
+    ),
+    navigationBarTheme: NavigationBarThemeData(
+      indicatorColor: Colors.white,
+      backgroundColor: Colors.black,
+      surfaceTintColor: Colors.white,
+      shadowColor: Colors.white,
+      labelTextStyle: WidgetStateProperty.resolveWith((state) {
+        if (state.contains(WidgetState.selected)) {
+          return const TextStyle(color: Colors.black);
+        }
+        return const TextStyle(color: Colors.white);
+      }),
+    ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ButtonStyle(
+        backgroundColor: WidgetStateProperty.all<Color>(Colors.white),
+        surfaceTintColor: WidgetStateProperty.all<Color>(Colors.white),
+        elevation: WidgetStateProperty.all<double>(10.0),
+        shape: WidgetStateProperty.all<RoundedRectangleBorder>(
+          RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(300.0),
+            side: const BorderSide(color: Colors.black, width: 3.0),
+          ),
+        ),
+        textStyle: WidgetStateProperty.all<TextStyle>(
+            TextStyle(fontWeight: FontWeight.bold)),
+      ),
+    ),
+  );
+}
 
 final ButtonStyle primaryStyle = ButtonStyle(
   backgroundColor: WidgetStateProperty.all<Color>(Colors.white),

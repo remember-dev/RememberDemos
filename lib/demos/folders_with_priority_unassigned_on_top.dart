@@ -14,6 +14,13 @@ class FoldersWithPriorityUnscheduledOnTop extends StatefulWidget {
 class _FoldersWithPriorityUnscheduledOnTopState
     extends State<FoldersWithPriorityUnscheduledOnTop> {
   List<List<TaskRow>> lists = [
+    List.generate(
+        10,
+        (i) => randomTaskRow(ValueKey(i),
+            title: "Unscheduled $i",
+            color: colors[i % colors.length],
+            priority: i ~/ 4 % 3))
+      ..sort((t1, t2) => t1.priority - t2.priority),
     [
       TaskRow(title: "Charlotte's Web", color: colors[1], priority: 0),
       TaskRow(title: "Harry Potter", color: colors[4], priority: 1),
@@ -27,18 +34,11 @@ class _FoldersWithPriorityUnscheduledOnTopState
       TaskRow(title: "Indiana Jones", color: colors[8], priority: 2),
       TaskRow(title: "Jurrasic Park", color: colors[5], priority: 2),
     ],
-    List.generate(
-        10,
-        (i) => randomTaskRow(ValueKey(i),
-            title: "Unscheduled $i",
-            color: colors[i % colors.length],
-            priority: i ~/ 4 % 3))
-      ..sort((t1, t2) => t1.priority - t2.priority),
   ];
 
-  List<TaskRow> get booksTasks => lists[0];
+  List<TaskRow> get unscheduledTasks => lists[0];
+  List<TaskRow> get booksTasks => lists[2];
   List<TaskRow> get moviesTasks => lists[1];
-  List<TaskRow> get unscheduledTasks => lists[2];
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +56,7 @@ class _FoldersWithPriorityUnscheduledOnTopState
                 onPressed: () {},
                 child: Text(
                   "Unscheduled",
-                  style: MOS.copyWith(fontSize: 18),
+                  style: semiBoldSecondary.copyWith(fontSize: 18),
                 ),
               ),
               children: unscheduledTasks
@@ -75,7 +75,7 @@ class _FoldersWithPriorityUnscheduledOnTopState
                 onPressed: () {},
                 child: Text(
                   "Books",
-                  style: MOS.copyWith(fontSize: 18),
+                  style: semiBoldSecondary.copyWith(fontSize: 18),
                 ),
               ),
               children: booksTasks
@@ -94,7 +94,7 @@ class _FoldersWithPriorityUnscheduledOnTopState
                 onPressed: () {},
                 child: Text(
                   "Movies",
-                  style: MOS.copyWith(fontSize: 18),
+                  style: semiBoldSecondary.copyWith(fontSize: 18),
                 ),
               ),
               children: moviesTasks

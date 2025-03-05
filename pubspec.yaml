@@ -44,3 +44,15 @@ flutter:
           weight: 600
         - asset: assets/fonts/montserrat/Montserrat-Bold.ttf
           weight: 700
+    - family: Quicksand
+      fonts:
+        - asset: assets/fonts/quicksand/Quicksand-VariableFont_wght.ttf
+    - family: Lobster
+      fonts:
+        - asset: assets/fonts/lobster/Lobster-Regular.ttf
+    - family: Nunito
+      fonts:
+        - asset: assets/fonts/nunito/Nunito-VariableFont_wght.ttf
+    - family: Lora
+      fonts:
+        - asset: assets/fonts/lora/Lora-VariableFont_wght.ttf

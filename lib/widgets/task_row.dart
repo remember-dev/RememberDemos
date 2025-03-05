@@ -80,7 +80,7 @@ class TaskRow extends StatelessWidget {
         margin: EdgeInsets.all(2),
         child: ListTile(
           tileColor: Colors.white,
-          title: Text(title),
+          title: Text(title, style: regularPrimary),
           trailing: _priorityLabel(),
         ),
       ),
@@ -99,6 +99,6 @@ class TaskRow extends StatelessWidget {
       _ => Colors.blue,
     };
 
-    return Text(text, style: MEB.copyWith(color: color, fontSize: 14));
+    return Text(text, style: semiBoldPrimary.copyWith(color: color));
   }
 }
