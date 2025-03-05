@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:remember_demos/main.dart';
+import 'package:remember_demos/text_styles.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -23,16 +24,45 @@ class _SettingsPageState extends State<SettingsPage> {
         child: Column(
           children: [
             ListTile(
-              title: Text("Header Font", style: TextStyle(fontSize: 16)),
+              tileColor: Colors.white,
+              title: Text("Primary Font", style: semiBoldPrimary),
+              subtitle: Text(
+                "Font for body, task titles, and large chunks of text",
+                style: regularPrimary,
+              ),
               trailing: DropdownButton<String>(
-                value: fontNotifier.value,
+                value: primaryFontNotifier.value,
                 items: fonts
                     .map(
-                      (f) => DropdownMenuItem<String>(value: f, child: Text(f)),
+                      (f) => DropdownMenuItem<String>(
+                          value: f, child: Text(f, style: regularPrimary)),
                     )
                     .toList(),
                 onChanged: (newFont) {
-                  fontNotifier.value = newFont!;
+                  primaryFontNotifier.value = newFont!;
+                },
+              ),
+            ),
+            const SizedBox(height: 8),
+            ListTile(
+              tileColor: Colors.white,
+              title: Text("Header Font", style: semiBoldSecondary),
+              subtitle: Text(
+                "Font for headers, things that pop out, and other things like that.",
+                style: regularSecondary,
+              ),
+              trailing: DropdownButton<String>(
+                value: secondaryFontNotifier.value,
+                items: fonts
+                    .map(
+                      (f) => DropdownMenuItem<String>(
+                          value: f, child: Text(f, style: regularSecondary)),
+                    )
+                    .toList(),
+                onChanged: (newFont) {
+                  setState(() {
+                    secondaryFontNotifier.value = newFont!;
+                  });
                 },
               ),
             ),

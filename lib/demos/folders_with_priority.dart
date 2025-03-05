@@ -54,7 +54,7 @@ class _FoldersWithPriorityState extends State<FoldersWithPriority> {
                 onPressed: () {},
                 child: Text(
                   "Books",
-                  style: MOS.copyWith(fontSize: 18),
+                  style: semiBoldSecondary.copyWith(fontSize: 18),
                 ),
               ),
               children: booksTasks
@@ -73,7 +73,7 @@ class _FoldersWithPriorityState extends State<FoldersWithPriority> {
                 onPressed: () {},
                 child: Text(
                   "Movies",
-                  style: MOS.copyWith(fontSize: 18),
+                  style: semiBoldSecondary.copyWith(fontSize: 18),
                 ),
               ),
               children: moviesTasks
@@ -92,7 +92,7 @@ class _FoldersWithPriorityState extends State<FoldersWithPriority> {
                 onPressed: () {},
                 child: Text(
                   "Unscheduled",
-                  style: MOS.copyWith(fontSize: 18),
+                  style: semiBoldSecondary.copyWith(fontSize: 18),
                 ),
               ),
               children: unscheduledTasks

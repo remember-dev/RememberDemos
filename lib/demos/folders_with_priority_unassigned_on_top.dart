@@ -56,7 +56,7 @@ class _FoldersWithPriorityUnscheduledOnTopState
                 onPressed: () {},
                 child: Text(
                   "Unscheduled",
-                  style: MOS.copyWith(fontSize: 18),
+                  style: semiBoldSecondary.copyWith(fontSize: 18),
                 ),
               ),
               children: unscheduledTasks
@@ -75,7 +75,7 @@ class _FoldersWithPriorityUnscheduledOnTopState
                 onPressed: () {},
                 child: Text(
                   "Books",
-                  style: MOS.copyWith(fontSize: 18),
+                  style: semiBoldSecondary.copyWith(fontSize: 18),
                 ),
               ),
               children: booksTasks
@@ -94,7 +94,7 @@ class _FoldersWithPriorityUnscheduledOnTopState
                 onPressed: () {},
                 child: Text(
                   "Movies",
-                  style: MOS.copyWith(fontSize: 18),
+                  style: semiBoldSecondary.copyWith(fontSize: 18),
                 ),
               ),
               children: moviesTasks

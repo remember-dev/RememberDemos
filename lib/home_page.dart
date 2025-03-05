@@ -35,10 +35,13 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(height: 64),
             Text(
               "Welcome to Remember Demos!",
-              style: MOS.copyWith(fontSize: 16),
+              style: semiBoldSecondary.copyWith(fontSize: 16),
             ),
             const SizedBox(height: 8),
-            Text("Click the buttons below to see the demos."),
+            Text(
+              "Click the buttons below to see the demos.",
+              style: mediumPrimary,
+            ),
             const SizedBox(height: 32),
             ElevatedButton(
               child: Text("Tasks with Priority (no folders) (Reorderable)"),
