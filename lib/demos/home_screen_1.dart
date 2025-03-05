@@ -5,6 +5,7 @@ import 'package:remember_demos/theme.dart';
 import 'package:remember_demos/widgets/calendar_scheduler.dart';
 import 'package:remember_demos/widgets/date_carousel.dart';
 import 'package:remember_demos/widgets/task_row.dart';
+import 'package:remember_demos/widgets/utils.dart';
 
 const double _MIN_EXPANSION_TILE_HEIGHT = 300;
 
@@ -16,10 +17,10 @@ class HomeScreen1 extends StatefulWidget {
 }
 
 class _HomeScreen1State extends State<HomeScreen1> {
-  List<BasicTask> toDoTasks = [];
-  List<BasicTask> masterListTasks = [];
-  List<BasicTask> scheduledTasks = [];
-  List<BasicTask> delegatedFromMeTasks = [];
+  var toDoTasks = List.generate(10, (i) => randomBasicTask());
+  var masterListTasks = List.generate(10, (i) => randomBasicTask());
+  var scheduledTasks = List.generate(10, (i) => randomBasicTask());
+  var delegatedFromMeTasks = List.generate(10, (i) => randomBasicTask());
 
   DateTime _dateToShow = DateTime.now();
   double tileHeight = _MIN_EXPANSION_TILE_HEIGHT;
@@ -38,7 +39,6 @@ class _HomeScreen1State extends State<HomeScreen1> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(centerTitle: true, title: Text("Home Screen 1")),
       body: Column(
         children: [
           const SafeArea(child: SizedBox()),

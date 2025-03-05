@@ -8,6 +8,8 @@ import 'package:remember_demos/settings_page.dart';
 import 'package:remember_demos/text_styles.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   @override
   State<HomePage> createState() => _HomePageState();
 }
