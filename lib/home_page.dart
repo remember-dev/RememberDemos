@@ -3,6 +3,8 @@ import 'package:remember_demos/demos/folders_with_priority.dart';
 import 'package:remember_demos/demos/folders_with_priority_unassigned_on_top.dart';
 import 'package:remember_demos/demos/home_screen_1.dart';
 import 'package:remember_demos/demos/home_screen_2.dart';
+import 'package:remember_demos/demos/home_screen_3.dart';
+import 'package:remember_demos/demos/home_screen_4.dart';
 import 'package:remember_demos/demos/tasks_with_priority.dart';
 import 'package:remember_demos/demos/tasks_with_priority_reorderable.dart';
 import 'package:remember_demos/settings_page.dart';
@@ -138,6 +140,30 @@ class _HomePageState extends State<HomePage> {
                   context,
                   MaterialPageRoute(
                     builder: (_) => HomeScreen2(),
+                  ),
+                );
+              },
+            ),
+            const SizedBox(height: 16),
+            ElevatedButton(
+              child: Text("Home Screen 3"),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => HomeScreen3(),
+                  ),
+                );
+              },
+            ),
+            const SizedBox(height: 16),
+            ElevatedButton(
+              child: Text("Home Screen 4"),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => HomeScreen4(),
                   ),
                 );
               },

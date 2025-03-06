@@ -52,13 +52,15 @@ class TaskRow extends StatelessWidget {
   final Color color;
   final int priority;
   final DateTime? scheduledTIme;
+  final bool completed;
 
-  const TaskRow({
+  TaskRow({
     super.key,
     required this.title,
     required this.color,
     required this.priority,
     this.scheduledTIme,
+    this.completed = false,
   });
 
   static TaskRow fromBasicTask(BasicTask task) {
@@ -67,6 +69,7 @@ class TaskRow extends StatelessWidget {
       color: task.color,
       priority: task.priority,
       scheduledTIme: task.scheduledTime,
+      completed: task.completed,
     );
   }
 
@@ -93,6 +96,12 @@ class TaskRow extends StatelessWidget {
         margin: EdgeInsets.all(2),
         child: ListTile(
           tileColor: Colors.white,
+          contentPadding: EdgeInsets.only(right: 12),
+          leading: Checkbox.adaptive(
+              value: completed,
+              onChanged: (value) {
+                // completed = value ?? false; // TODO
+              }),
           title: Text(title, style: regularPrimary),
           trailing: Column(
             crossAxisAlignment: CrossAxisAlignment.end,

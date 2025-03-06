@@ -88,6 +88,59 @@ const List _verbs = [
   "Return",
   "Measure",
 ];
+const List _nouns = [
+  "Apple",
+  "Table",
+  "Chair",
+  "Mountain",
+  "River",
+  "Ocean",
+  "Tree",
+  "House",
+  "Car",
+  "Bicycle",
+  "Window",
+  "Door",
+  "Book",
+  "Pen",
+  "Laptop",
+  "Phone",
+  "Garden",
+  "Bridge",
+  "Road",
+  "Sky",
+  "Cloud",
+  "Sun",
+  "Moon",
+  "Star",
+  "Lamp",
+  "Candle",
+  "Clock",
+  "Mirror",
+  "Bottle",
+  "Cup",
+  "Plate",
+  "Fork",
+  "Spoon",
+  "Bed",
+  "Pillow",
+  "Blanket",
+  "Shoe",
+  "Hat",
+  "Shirt",
+  "Pants",
+  "Wallet",
+  "Key",
+  "Backpack",
+  "Camera",
+  "Painting",
+  "Statue",
+  "Fence",
+  "Doorbell",
+  "Mailbox",
+  "Ball",
+  "Toy",
+];
 const List _adverbs = [
   "Quickly",
   "Slowly",
@@ -143,7 +196,7 @@ const List _adverbs = [
 ];
 
 String _getRandomTitle(Random rand) {
-  return "${_verbs.elementAt(rand.nextInt(_verbs.length))} ${_adverbs.elementAt(rand.nextInt(_adverbs.length))}";
+  return "${_verbs.elementAt(rand.nextInt(_verbs.length))} ${_nouns.elementAt(rand.nextInt(_nouns.length))} ${_adverbs.elementAt(rand.nextInt(_adverbs.length))}";
 }
 
 BasicTask randomBasicTask({
