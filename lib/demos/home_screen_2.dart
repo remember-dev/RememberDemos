@@ -17,13 +17,27 @@ class HomeScreen2 extends StatefulWidget {
 }
 
 class _HomeScreen2State extends State<HomeScreen2> {
-  var toDoTasks = List.generate(10, (i) => randomBasicTask());
-  var masterListTasks = List.generate(10, (i) => randomBasicTask());
-  var scheduledTasks = List.generate(10, (i) => randomBasicTask());
-  var delegatedFromMeTasks = List.generate(10, (i) => randomBasicTask());
+  var toDoTasks = List.generate(10, (i) => randomBasicTask(taskType: 1))
+    ..sort((a, b) => b.scheduledTime == null
+        ? 0
+        : a.scheduledTime?.compareTo(b.scheduledTime!) ?? 0);
+  var masterListTasks =
+      List.generate(10, (i) => randomBasicTask(scheduledTime: null))
+        ..sort((a, b) => b.scheduledTime == null
+            ? 0
+            : a.scheduledTime?.compareTo(b.scheduledTime!) ?? 0);
+  var scheduledTasks = List.generate(10, (i) => randomBasicTask())
+    ..sort((a, b) => b.scheduledTime == null
+        ? 0
+        : a.scheduledTime?.compareTo(b.scheduledTime!) ?? 0);
+  var delegatedFromMeTasks = List.generate(10, (i) => randomBasicTask())
+    ..sort((a, b) => b.scheduledTime == null
+        ? 0
+        : a.scheduledTime?.compareTo(b.scheduledTime!) ?? 0);
 
   DateTime _dateToShow = DateTime.now();
   double tileHeight = _MIN_EXPANSION_TILE_HEIGHT;
+  bool showListView = false;
   bool isOpen = false;
   final dateCarouselKey = GlobalKey();
   final expansionTileTitleKey = GlobalKey();
@@ -33,6 +47,15 @@ class _HomeScreen2State extends State<HomeScreen2> {
   }
 
   Widget showScheduledTasks() {
+    if (showListView) {
+      return ListView.builder(
+        itemCount: scheduledTasks.length,
+        itemBuilder: (context, index) {
+          return TaskRow.fromBasicTask(scheduledTasks[index]);
+        },
+      );
+    }
+
     return CalendarScheduler(tasks: scheduledTasks, dateToShow: _dateToShow);
   }
 
@@ -46,7 +69,7 @@ class _HomeScreen2State extends State<HomeScreen2> {
             padding: const EdgeInsets.all(8.0),
             child: Row(
               children: [
-                const SizedBox(width: 48),
+                const SizedBox(width: 48 + 52),
                 const Spacer(),
                 DateCarousel(
                   key: dateCarouselKey,
@@ -59,6 +82,14 @@ class _HomeScreen2State extends State<HomeScreen2> {
                 IconButton(
                   icon: const Icon(Icons.calendar_month_outlined),
                   onPressed: onCalendarPressed,
+                ),
+                Switch.adaptive(
+                  value: showListView,
+                  onChanged: (value) {
+                    setState(() {
+                      showListView = value;
+                    });
+                  },
                 ),
               ],
             ),

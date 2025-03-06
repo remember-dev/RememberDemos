@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:remember_demos/entities/basic_task.dart';
 import 'package:remember_demos/text_styles.dart';
 
@@ -50,12 +51,14 @@ class TaskRow extends StatelessWidget {
   // final String subtitle;
   final Color color;
   final int priority;
+  final DateTime? scheduledTIme;
 
   const TaskRow({
     super.key,
     required this.title,
     required this.color,
     required this.priority,
+    this.scheduledTIme,
   });
 
   static TaskRow fromBasicTask(BasicTask task) {
@@ -63,6 +66,7 @@ class TaskRow extends StatelessWidget {
       title: task.taskTitle,
       color: task.color,
       priority: task.priority,
+      scheduledTIme: task.scheduledTime,
     );
   }
 
@@ -90,7 +94,18 @@ class TaskRow extends StatelessWidget {
         child: ListTile(
           tileColor: Colors.white,
           title: Text(title, style: regularPrimary),
-          trailing: _priorityLabel(),
+          trailing: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              _priorityLabel(),
+              if (scheduledTIme != null)
+                Text(
+                  DateFormat('E MMM d h:mm a').format(scheduledTIme!),
+                  style: regularPrimary,
+                ),
+            ],
+          ),
         ),
       ),
     );
