@@ -22,154 +22,162 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                IconButton(
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (_) => SettingsPage()));
-                  },
-                  icon: Icon(Icons.settings),
-                ),
-              ],
-            ),
-            const Spacer(),
-            Image.asset("assets/typographic-logo.png"),
-            const SizedBox(height: 32),
-            Text(
-              "Welcome to Remember Demos!",
-              style: semiBoldSecondary.copyWith(fontSize: 16),
-            ),
-            const SizedBox(height: 8),
-            Text(
-              "Click the buttons below to see the demos.",
-              style: mediumPrimary,
-            ),
-            const SizedBox(height: 32),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
-              child: const Divider(color: Color.fromARGB(255, 13, 81, 199)),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "Folders and Prioritization",
-                  style: semiBoldSecondary.copyWith(fontSize: 16),
+        child: SingleChildScrollView(
+          physics: AlwaysScrollableScrollPhysics(),
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (_) => SettingsPage()));
+                    },
+                    icon: Icon(Icons.settings),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 24),
+              Image.asset("assets/typographic-logo.png"),
+              const SizedBox(height: 32),
+              Text(
+                "Welcome to Remember Demos!",
+                style: semiBoldSecondary.copyWith(fontSize: 16),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                "Click the buttons below to see the demos.",
+                style: mediumPrimary,
+              ),
+              const SizedBox(height: 32),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                child: const Divider(color: Color.fromARGB(255, 13, 81, 199)),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "Folders and Prioritization",
+                    style: semiBoldSecondary.copyWith(fontSize: 16),
+                  ),
                 ),
               ),
-            ),
-            const SizedBox(height: 16),
-            ElevatedButton(
-              child: Text("Tasks with Priority (no folders) (Reorderable)"),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (_) => TasksWithPriority()),
-                );
-              },
-            ),
-            const SizedBox(height: 16),
-            ElevatedButton(
-              child: Text("Tasks with Priority (no folders) (Drag&Drop)"),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (_) => TasksWithPriorityDD()),
-                );
-              },
-            ),
-            const SizedBox(height: 16),
-            ElevatedButton(
-              child: Text("Folders with Priority"),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (_) => FoldersWithPriority()),
-                );
-              },
-            ),
-            const SizedBox(height: 16),
-            ElevatedButton(
-              child: Text("Folders with Priority (Unscheduled at the top)"),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => FoldersWithPriorityUnscheduledOnTop(),
+              const SizedBox(height: 16),
+              ElevatedButton(
+                child: Text("Tasks with Priority (no folders) (Reorderable)"),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => TasksWithPriority()),
+                  );
+                },
+              ),
+              const SizedBox(height: 16),
+              ElevatedButton(
+                child: Text("Tasks with Priority (no folders) (Drag&Drop)"),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => TasksWithPriorityDD()),
+                  );
+                },
+              ),
+              const SizedBox(height: 16),
+              ElevatedButton(
+                child: Text("Folders with Priority"),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => FoldersWithPriority()),
+                  );
+                },
+              ),
+              const SizedBox(height: 16),
+              ElevatedButton(
+                child: Text("Folders with Priority (Unscheduled at the top)"),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => FoldersWithPriorityUnscheduledOnTop(),
+                    ),
+                  );
+                },
+              ),
+              const SizedBox(height: 16),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                child: const Divider(color: Color.fromARGB(255, 13, 81, 199)),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "Home Screen",
+                    style: semiBoldSecondary.copyWith(fontSize: 16),
                   ),
-                );
-              },
-            ),
-            const SizedBox(height: 16),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
-              child: const Divider(color: Color.fromARGB(255, 13, 81, 199)),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "Home Screen",
-                  style: semiBoldSecondary.copyWith(fontSize: 16),
                 ),
               ),
-            ),
-            const SizedBox(height: 16),
-            ElevatedButton(
-              child: Text("Home Screen 1 (current)"),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => HomeScreen1(),
-                  ),
-                );
-              },
-            ),
-            const SizedBox(height: 16),
-            ElevatedButton(
-              child: Text("Home Screen 2"),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => HomeScreen2(),
-                  ),
-                );
-              },
-            ),
-            const SizedBox(height: 16),
-            ElevatedButton(
-              child: Text("Home Screen 3"),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => HomeScreen3(),
-                  ),
-                );
-              },
-            ),
-            const SizedBox(height: 16),
-            ElevatedButton(
-              child: Text("Home Screen 4"),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => HomeScreen4(),
-                  ),
-                );
-              },
-            ),
-            const Spacer(flex: 3),
-          ],
+              const SizedBox(height: 16),
+              ElevatedButton(
+                child: Text("Home Screen 1 (current)"),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => HomeScreen1(),
+                    ),
+                  );
+                },
+              ),
+              Text("The current home screen as of March 6, 2025."),
+              const SizedBox(height: 16),
+              ElevatedButton(
+                child: Text("Home Screen 2"),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => HomeScreen2(),
+                    ),
+                  );
+                },
+              ),
+              Text("Switch in top right instead of user setting."),
+              const SizedBox(height: 16),
+              ElevatedButton(
+                child: Text("Home Screen 3"),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => HomeScreen3(),
+                    ),
+                  );
+                },
+              ),
+              Text(
+                  "No bottom expansion tile. Switch shows what was in the bottom tile (Future and delegated tasks)"),
+              const SizedBox(height: 16),
+              ElevatedButton(
+                child: Text("Home Screen 4"),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => HomeScreen4(),
+                    ),
+                  );
+                },
+              ),
+              Text("The 'Scheduled Tasks' tile is NOT expandable"),
+              const SizedBox(height: 64),
+            ],
+          ),
         ),
       ),
     );
