@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:remember_demos/demos/folders_with_priority.dart';
 import 'package:remember_demos/demos/folders_with_priority_unassigned_on_top.dart';
 import 'package:remember_demos/demos/home_screen_1.dart';
+import 'package:remember_demos/demos/home_screen_2.dart';
 import 'package:remember_demos/demos/tasks_with_priority.dart';
 import 'package:remember_demos/demos/tasks_with_priority_reorderable.dart';
 import 'package:remember_demos/settings_page.dart';
@@ -119,12 +120,24 @@ class _HomePageState extends State<HomePage> {
             ),
             const SizedBox(height: 16),
             ElevatedButton(
-              child: Text("Home Screen as of March 5 2025"),
+              child: Text("Home Screen 1 (current)"),
               onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (_) => HomeScreen1(),
+                  ),
+                );
+              },
+            ),
+            const SizedBox(height: 16),
+            ElevatedButton(
+              child: Text("Home Screen 2"),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => HomeScreen2(),
                   ),
                 );
               },
