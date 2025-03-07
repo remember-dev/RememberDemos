@@ -5,6 +5,7 @@ import 'package:remember_demos/demos/home_screen_1.dart';
 import 'package:remember_demos/demos/home_screen_2.dart';
 import 'package:remember_demos/demos/home_screen_3.dart';
 import 'package:remember_demos/demos/home_screen_4.dart';
+import 'package:remember_demos/demos/onboarding/onboarding_1.dart';
 import 'package:remember_demos/demos/tasks_with_priority.dart';
 import 'package:remember_demos/demos/tasks_with_priority_reorderable.dart';
 import 'package:remember_demos/settings_page.dart';
@@ -175,6 +176,64 @@ class _HomePageState extends State<HomePage> {
                 },
               ),
               _subtitleText("The 'Scheduled Tasks' tile is NOT expandable"),
+              const SizedBox(height: 16),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                child: const Divider(color: Color.fromARGB(255, 13, 81, 199)),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "Onboarding",
+                    style: semiBoldSecondary.copyWith(fontSize: 16),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 16),
+              ElevatedButton(
+                child: Text("Onboarding 1 (current)"),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => Onboarding1(),
+                    ),
+                  );
+                },
+              ),
+              _subtitleText(
+                  "The current onboarding process as of March 7th, 2025"),
+              const SizedBox(height: 16),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                child: const Divider(color: Color.fromARGB(255, 13, 81, 199)),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "Planning Process",
+                    style: semiBoldSecondary.copyWith(fontSize: 16),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 16),
+              ElevatedButton(
+                child: Text("Planning Process 1 (current)"),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => Onboarding1(), // TODO
+                    ),
+                  );
+                },
+              ),
+              _subtitleText(
+                  "The current planning process as of March 7th, 2025"),
               const SizedBox(height: 64),
             ],
           ),

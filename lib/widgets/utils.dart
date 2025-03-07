@@ -33,6 +33,9 @@ DateTime mergeDateAndTime(DateTime date, TimeOfDay time) {
   return date.copyWith(hour: time.hour, minute: time.minute);
 }
 
+/// Hides the keyboard if possible.
+void hideKeyboard() => FocusManager.instance.primaryFocus?.unfocus();
+
 //////////////////// RANDOM GENERATORS ////////////////////
 const List _verbs = [
   "Run",
