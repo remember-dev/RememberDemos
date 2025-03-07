@@ -134,7 +134,7 @@ class _HomePageState extends State<HomePage> {
                   );
                 },
               ),
-              Text("The current home screen as of March 6, 2025."),
+              _subtitleText("The current home screen as of March 6, 2025."),
               const SizedBox(height: 16),
               ElevatedButton(
                 child: Text("Home Screen 2"),
@@ -147,7 +147,7 @@ class _HomePageState extends State<HomePage> {
                   );
                 },
               ),
-              Text("Switch in top right instead of user setting."),
+              _subtitleText("Switch in top right instead of user setting."),
               const SizedBox(height: 16),
               ElevatedButton(
                 child: Text("Home Screen 3"),
@@ -160,7 +160,7 @@ class _HomePageState extends State<HomePage> {
                   );
                 },
               ),
-              Text(
+              _subtitleText(
                   "No bottom expansion tile. Switch shows what was in the bottom tile (Future and delegated tasks)"),
               const SizedBox(height: 16),
               ElevatedButton(
@@ -174,12 +174,19 @@ class _HomePageState extends State<HomePage> {
                   );
                 },
               ),
-              Text("The 'Scheduled Tasks' tile is NOT expandable"),
+              _subtitleText("The 'Scheduled Tasks' tile is NOT expandable"),
               const SizedBox(height: 64),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  Widget _subtitleText(String text) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 24),
+      child: Text(text, textAlign: TextAlign.center),
     );
   }
 }
