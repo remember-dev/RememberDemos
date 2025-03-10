@@ -3,6 +3,23 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_guid/flutter_guid.dart';
 import 'package:remember_demos/entities/basic_task.dart';
+import 'package:remember_demos/theme.dart';
+
+Color hexToColor(String? code) {
+  if (code?.length != 6) return RememberColors.regular;
+  final color = int.tryParse(code ?? '', radix: 16);
+  return (color == null || color < 0)
+      ? RememberColors.regular
+      : Color(0xFF000000 + color);
+}
+
+/// It is guarantted that all strings returned from here can be passed to
+/// [hexToColor] and return the correct colors.
+String colorToHex(Color color) {
+  return "${(color.r * 0xFF).toInt().toRadixString(16).padLeft(2, '0').toUpperCase()}"
+      "${(color.g * 0xFF).toInt().toRadixString(16).padLeft(2, '0').toUpperCase()}"
+      "${(color.b * 0xFF).toInt().toRadixString(16).padLeft(2, '0').toUpperCase()}";
+}
 
 /// Round to the next closest 30 minutes
 ///

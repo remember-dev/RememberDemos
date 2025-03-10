@@ -1,0 +1,44 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/rendering.dart';
+
+class DryIntrinsicWidth extends SingleChildRenderObjectWidget {
+  const DryIntrinsicWidth({super.key, super.child});
+
+  @override
+  RenderDryIntrinsicWidth createRenderObject(BuildContext context) =>
+      RenderDryIntrinsicWidth();
+}
+
+class RenderDryIntrinsicWidth extends RenderIntrinsicWidth {
+  @override
+  Size computeDryLayout(BoxConstraints constraints) {
+    if (child != null) {
+      final width = child?.computeMinIntrinsicWidth(constraints.maxHeight);
+      final height = child?.computeMinIntrinsicHeight(width!);
+      return Size(width!, height!);
+    } else {
+      return Size.zero;
+    }
+  }
+}
+
+class DryIntrinsicHeight extends SingleChildRenderObjectWidget {
+  const DryIntrinsicHeight({super.key, super.child});
+
+  @override
+  RenderDryIntrinsicHeight createRenderObject(BuildContext context) =>
+      RenderDryIntrinsicHeight();
+}
+
+class RenderDryIntrinsicHeight extends RenderIntrinsicHeight {
+  @override
+  Size computeDryLayout(BoxConstraints constraints) {
+    if (child != null) {
+      final height = child?.computeMinIntrinsicHeight(constraints.maxWidth);
+      final width = child?.computeMinIntrinsicWidth(height!);
+      return Size(width!, height!);
+    } else {
+      return Size.zero;
+    }
+  }
+}

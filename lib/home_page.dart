@@ -6,6 +6,7 @@ import 'package:remember_demos/demos/home_screen_2.dart';
 import 'package:remember_demos/demos/home_screen_3.dart';
 import 'package:remember_demos/demos/home_screen_4.dart';
 import 'package:remember_demos/demos/onboarding/onboarding_1.dart';
+import 'package:remember_demos/demos/planning/planning_values_1.dart';
 import 'package:remember_demos/demos/tasks_with_priority.dart';
 import 'package:remember_demos/demos/tasks_with_priority_reorderable.dart';
 import 'package:remember_demos/settings_page.dart';
@@ -227,7 +228,7 @@ class _HomePageState extends State<HomePage> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (_) => Onboarding1(), // TODO
+                      builder: (_) => PlanningValues1(), // TODO
                     ),
                   );
                 },
