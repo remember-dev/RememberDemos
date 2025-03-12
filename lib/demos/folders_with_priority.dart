@@ -2,6 +2,7 @@ import 'package:drag_and_drop_lists/drag_and_drop_lists.dart';
 import 'package:flutter/material.dart';
 import 'package:remember_demos/text_styles.dart';
 import 'package:remember_demos/widgets/task_row.dart';
+import 'package:remember_demos/widgets/utils.dart';
 
 class FoldersWithPriority extends StatefulWidget {
   const FoldersWithPriority({super.key});
@@ -13,23 +14,23 @@ class FoldersWithPriority extends StatefulWidget {
 class _FoldersWithPriorityState extends State<FoldersWithPriority> {
   List<List<TaskRow>> lists = [
     [
-      TaskRow(title: "Charlotte's Web", color: colors[1], priority: 0),
-      TaskRow(title: "Harry Potter", color: colors[4], priority: 1),
-      TaskRow(title: "Atomic Habits", color: colors[2], priority: 2),
+      TaskRow(title: "Charlotte's Web", color: taskColors[1], priority: 0),
+      TaskRow(title: "Harry Potter", color: taskColors[4], priority: 1),
+      TaskRow(title: "Atomic Habits", color: taskColors[2], priority: 2),
     ],
     [
-      TaskRow(title: "Lego Batman", color: colors[0], priority: 0),
-      TaskRow(title: "Apollo 13", color: colors[7], priority: 0),
-      TaskRow(title: "Lord of the Rings", color: colors[6], priority: 1),
-      TaskRow(title: "12 Angry Men", color: colors[3], priority: 1),
-      TaskRow(title: "Indiana Jones", color: colors[8], priority: 2),
-      TaskRow(title: "Jurrasic Park", color: colors[5], priority: 2),
+      TaskRow(title: "Lego Batman", color: taskColors[0], priority: 0),
+      TaskRow(title: "Apollo 13", color: taskColors[7], priority: 0),
+      TaskRow(title: "Lord of the Rings", color: taskColors[6], priority: 1),
+      TaskRow(title: "12 Angry Men", color: taskColors[3], priority: 1),
+      TaskRow(title: "Indiana Jones", color: taskColors[8], priority: 2),
+      TaskRow(title: "Jurrasic Park", color: taskColors[5], priority: 2),
     ],
     List.generate(
         10,
         (i) => randomTaskRow(ValueKey(i),
             title: "Unscheduled $i",
-            color: colors[i % colors.length],
+            color: taskColors[i % taskColors.length],
             priority: i ~/ 4 % 3))
       ..sort((t1, t2) => t1.priority - t2.priority),
   ];
