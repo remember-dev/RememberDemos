@@ -17,25 +17,32 @@ class TaskRow extends StatelessWidget {
   // final String subtitle;
   final Color color;
   final int priority;
-  final DateTime? scheduledTIme;
+  final DateTime? scheduledTime;
   final bool completed;
+  final bool allDayTask;
+  final bool forceOffScheduledTime;
 
   const TaskRow({
     super.key,
     required this.title,
     required this.color,
     required this.priority,
-    this.scheduledTIme,
+    this.scheduledTime,
     this.completed = false,
+    this.allDayTask = false,
+    this.forceOffScheduledTime = false,
   });
 
-  static TaskRow fromBasicTask(BasicTask task) {
+  static TaskRow fromBasicTask(BasicTask task,
+      {bool forceOffScheduledTime = false}) {
     return TaskRow(
       title: task.taskTitle,
       color: task.color,
       priority: task.priority,
-      scheduledTIme: task.scheduledTime,
+      scheduledTime: task.scheduledTime,
       completed: task.completed,
+      allDayTask: task.isAllDay,
+      forceOffScheduledTime: forceOffScheduledTime,
     );
   }
 
@@ -61,6 +68,7 @@ class TaskRow extends StatelessWidget {
         ),
         margin: EdgeInsets.all(2),
         child: ListTile(
+          visualDensity: VisualDensity(vertical: allDayTask ? -4 : 0),
           tileColor: Colors.white,
           contentPadding: EdgeInsets.only(right: 12),
           leading: Checkbox.adaptive(
@@ -74,9 +82,16 @@ class TaskRow extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               _priorityLabel(),
-              if (scheduledTIme != null)
+              if (scheduledTime != null &&
+                  !allDayTask &&
+                  !forceOffScheduledTime)
                 Text(
-                  DateFormat('E MMM d h:mm a').format(scheduledTIme!),
+                  DateFormat('E MMM d h:mm a').format(scheduledTime!),
+                  style: regularPrimary,
+                ),
+              if (scheduledTime != null && allDayTask && !forceOffScheduledTime)
+                Text(
+                  DateFormat('E MMM d').format(scheduledTime!),
                   style: regularPrimary,
                 ),
             ],

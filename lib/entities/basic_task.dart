@@ -40,7 +40,7 @@ class BasicTask extends BaseEntity<BasicTask> {
 
   bool get isRecurringTask => recurranceType != null;
   bool get isChildTask => parentTask != null;
-  bool get isAllDay => taskType == 0;
+  bool get isAllDay => taskType == 1;
   bool isOwnedByMe(String myUserId) => userId.toString() == myUserId;
 
   /// Returns `true` only if `this` is due on [day] (day, month, and year).

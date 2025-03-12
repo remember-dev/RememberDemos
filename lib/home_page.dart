@@ -6,12 +6,15 @@ import 'package:remember_demos/demos/home_screen_1.dart';
 import 'package:remember_demos/demos/home_screen_2.dart';
 import 'package:remember_demos/demos/home_screen_3.dart';
 import 'package:remember_demos/demos/home_screen_4.dart';
+import 'package:remember_demos/demos/home_screen_5.dart';
 import 'package:remember_demos/demos/onboarding/onboarding_1.dart';
 import 'package:remember_demos/demos/planning/planning_values_1.dart';
 import 'package:remember_demos/demos/tasks_with_priority.dart';
 import 'package:remember_demos/demos/tasks_with_priority_reorderable.dart';
 import 'package:remember_demos/settings_page.dart';
 import 'package:remember_demos/text_styles.dart';
+
+GlobalKey navigatorKey = GlobalKey<State<StatefulWidget>>();
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -24,6 +27,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: navigatorKey,
       body: Center(
         child: SingleChildScrollView(
           physics: AlwaysScrollableScrollPhysics(),
@@ -190,6 +194,19 @@ class _HomePageState extends State<HomePage> {
                 },
               ),
               _subtitleText("The 'Scheduled Tasks' tile is NOT expandable"),
+              const SizedBox(height: 16),
+              ElevatedButton(
+                child: Text("Home Screen 5"),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => HomeScreen5(),
+                    ),
+                  );
+                },
+              ),
+              _subtitleText("The Google-Calendar look alike"),
               const SizedBox(height: 16),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24),
