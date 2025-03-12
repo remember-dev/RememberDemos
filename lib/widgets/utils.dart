@@ -106,6 +106,10 @@ String get randomTitle =>
 
 Color get randomTaskColor => taskColors[rand.nextInt(taskColors.length)];
 
+DateTime get randomScheduledTime => DateTime.now()
+    .copyWith(hour: 0, minute: 0, second: 0)
+    .add(Duration(minutes: rand.nextInt(1440)));
+
 BasicTask randomBasicTask({
   String? taskTitle,
   bool? completed,
@@ -128,10 +132,7 @@ BasicTask randomBasicTask({
     lastModified: DateTime.timestamp(),
     userId: userId ?? Guid.newGuid,
     // Random time from now to three days from now
-    scheduledTime: scheduledTime ??
-        DateTime.now()
-            .copyWith(hour: 0, minute: 0, second: 0)
-            .add(Duration(minutes: rand.nextInt(1440))),
+    scheduledTime: scheduledTime,
     taskTitle: taskTitle ?? randomTitle,
     completed: completed ?? rand.nextBool(),
     archived: archived ?? rand.nextBool(),

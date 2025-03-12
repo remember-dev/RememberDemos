@@ -16,16 +16,16 @@ class HomeScreen3 extends StatefulWidget {
 }
 
 class _HomeScreen3State extends State<HomeScreen3> {
-  var toDoTasks = List.generate(10, (i) => randomBasicTask(taskType: 1))
+  var toDoTasks = List.generate(10,
+      (i) => randomBasicTask(taskType: 1, scheduledTime: randomScheduledTime))
+    ..sort((a, b) => a.scheduledTime?.compareTo(b.scheduledTime!) ?? 0);
+  var masterListTasks = List.generate(
+      10, (i) => randomBasicTask(taskType: 0, scheduledTime: null))
     ..sort((a, b) => b.scheduledTime == null
         ? 0
         : a.scheduledTime?.compareTo(b.scheduledTime!) ?? 0);
-  var masterListTasks =
-      List.generate(10, (i) => randomBasicTask(scheduledTime: null))
-        ..sort((a, b) => b.scheduledTime == null
-            ? 0
-            : a.scheduledTime?.compareTo(b.scheduledTime!) ?? 0);
-  var scheduledTasks = List.generate(10, (i) => randomBasicTask())
+  var scheduledTasks = List.generate(10,
+      (i) => randomBasicTask(taskType: 2, scheduledTime: randomScheduledTime))
     ..sort((a, b) => b.scheduledTime == null
         ? 0
         : a.scheduledTime?.compareTo(b.scheduledTime!) ?? 0);

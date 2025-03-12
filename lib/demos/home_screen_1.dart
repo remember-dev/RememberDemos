@@ -17,10 +17,15 @@ class HomeScreen1 extends StatefulWidget {
 }
 
 class _HomeScreen1State extends State<HomeScreen1> {
-  var toDoTasks = List.generate(10, (i) => randomBasicTask());
-  var masterListTasks = List.generate(10, (i) => randomBasicTask());
-  var scheduledTasks = List.generate(10, (i) => randomBasicTask());
-  var delegatedFromMeTasks = List.generate(10, (i) => randomBasicTask());
+  var toDoTasks = List.generate(10,
+      (i) => randomBasicTask(taskType: 1, scheduledTime: randomScheduledTime));
+  var masterListTasks = List.generate(10, (i) => randomBasicTask(taskType: 0));
+  var scheduledTasks = List.generate(10,
+      (i) => randomBasicTask(taskType: 2, scheduledTime: randomScheduledTime));
+  var delegatedFromMeTasks = List.generate(
+      10,
+      (i) => randomBasicTask(
+          isDelegated: true, scheduledTime: randomScheduledTime));
 
   DateTime _dateToShow = DateTime.now();
   double tileHeight = _MIN_EXPANSION_TILE_HEIGHT;

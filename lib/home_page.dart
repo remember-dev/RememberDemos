@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:remember_demos/demos/folders_with_priority.dart';
 import 'package:remember_demos/demos/folders_with_priority_unassigned_on_top.dart';
+import 'package:remember_demos/demos/folders_with_priority_unassigned_on_top2.dart';
 import 'package:remember_demos/demos/home_screen_1.dart';
 import 'package:remember_demos/demos/home_screen_2.dart';
 import 'package:remember_demos/demos/home_screen_3.dart';
@@ -109,6 +110,18 @@ class _HomePageState extends State<HomePage> {
                   );
                 },
               ),
+              const SizedBox(height: 16),
+              ElevatedButton(
+                child: Text("Folders with Priority"),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (_) => FoldersWithPriorityUnscheduledOnTop2()),
+                  );
+                },
+              ),
+              _subtitleText("Renamed the titles and labels"),
               const SizedBox(height: 16),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24),

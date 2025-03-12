@@ -20,7 +20,7 @@ class TaskRow extends StatelessWidget {
   final DateTime? scheduledTIme;
   final bool completed;
 
-  TaskRow({
+  const TaskRow({
     super.key,
     required this.title,
     required this.color,
