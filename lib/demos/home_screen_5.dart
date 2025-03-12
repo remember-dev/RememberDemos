@@ -4,6 +4,7 @@ import 'package:remember_demos/text_styles.dart';
 import 'package:remember_demos/theme.dart';
 import 'package:remember_demos/widgets/date_carousel.dart';
 import 'package:remember_demos/widgets/google_calendar_scheduler.dart';
+import 'package:remember_demos/widgets/left_menu.dart';
 import 'package:remember_demos/widgets/task_row.dart';
 import 'package:remember_demos/widgets/utils.dart';
 
@@ -33,8 +34,14 @@ class _HomeScreen5State extends State<HomeScreen5> {
   final dateCarouselKey = GlobalKey();
   final expansionTileTitleKey = GlobalKey();
 
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+
   void onCalendarPressed() async {
     print("Hello");
+  }
+
+  void onMenuPressed() async {
+    scaffoldKey.currentState?.openDrawer();
   }
 
   Widget showToDoTasks() {
@@ -94,6 +101,8 @@ class _HomeScreen5State extends State<HomeScreen5> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: scaffoldKey,
+      drawer: LeftMenu(),
       body: Column(
         children: [
           SafeArea(
@@ -115,6 +124,10 @@ class _HomeScreen5State extends State<HomeScreen5> {
                     padding: const EdgeInsets.all(8.0),
                     child: Row(
                       children: [
+                        IconButton(
+                          icon: const Icon(Icons.menu),
+                          onPressed: onMenuPressed,
+                        ),
                         const SizedBox(width: 48),
                         const Spacer(),
                         DateCarousel(
