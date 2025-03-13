@@ -155,7 +155,10 @@ class _HomeScreen5State extends State<HomeScreen5> {
                   ),
 
                   // The to-do tasks for the day
-                  showToDoTasks(),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 4),
+                    child: showToDoTasks(),
+                  ),
                 ],
               ),
             ),
