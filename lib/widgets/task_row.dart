@@ -68,7 +68,7 @@ class TaskRow extends StatelessWidget {
         ),
         margin: EdgeInsets.all(2),
         child: ListTile(
-          visualDensity: VisualDensity(vertical: allDayTask ? -4 : 0),
+          // visualDensity: VisualDensity(vertical: allDayTask ? -4 : 0),
           tileColor: Colors.white,
           contentPadding: EdgeInsets.only(right: 12),
           leading: Checkbox.adaptive(

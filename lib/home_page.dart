@@ -8,6 +8,7 @@ import 'package:remember_demos/demos/home_screen_3.dart';
 import 'package:remember_demos/demos/home_screen_4.dart';
 import 'package:remember_demos/demos/home_screen_5.dart';
 import 'package:remember_demos/demos/onboarding/onboarding_1.dart';
+import 'package:remember_demos/demos/onboarding/onboarding_2.dart';
 import 'package:remember_demos/demos/planning/planning_values_1.dart';
 import 'package:remember_demos/demos/tasks_with_priority.dart';
 import 'package:remember_demos/demos/tasks_with_priority_reorderable.dart';
@@ -237,6 +238,19 @@ class _HomePageState extends State<HomePage> {
               _subtitleText(
                   "The current onboarding process as of March 7th, 2025"),
               const SizedBox(height: 16),
+              ElevatedButton(
+                child: Text("Onboarding 2"),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => Onboarding2(),
+                    ),
+                  );
+                },
+              ),
+              _subtitleText("An idea of onboarding that mimics VisualMind"),
+              const SizedBox(height: 16),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24),
                 child: const Divider(color: Color.fromARGB(255, 13, 81, 199)),
@@ -258,7 +272,7 @@ class _HomePageState extends State<HomePage> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (_) => PlanningValues1(), // TODO
+                      builder: (_) => PlanningValues1(),
                     ),
                   );
                 },

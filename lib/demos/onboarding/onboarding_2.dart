@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:remember_demos/demos/onboarding/intro_screen_1.dart';
+import 'package:remember_demos/demos/onboarding/visual_mind_1/visual_mind_1.dart';
 
 class Onboarding2 extends StatefulWidget {
   const Onboarding2({super.key});
@@ -16,9 +16,9 @@ class _Onboarding2State extends State<Onboarding2> {
         child: ElevatedButton(
           onPressed: () => Navigator.push(
             context,
-            MaterialPageRoute(builder: (_) => IntroScreenOne()),
+            MaterialPageRoute(builder: (_) => VisualMind1()),
           ),
-          child: Text("Start flow"),
+          child: Text("Start VisualMind mockup flow"),
         ),
       ),
     );

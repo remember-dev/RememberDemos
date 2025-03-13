@@ -59,7 +59,7 @@ class _FoldersWithPriorityUnscheduledOnTop2State
               header: ElevatedButton(
                 onPressed: () {},
                 child: Text(
-                  "Unscheduled",
+                  "No Folder",
                   style: semiBoldSecondary.copyWith(fontSize: 18),
                 ),
               ),
