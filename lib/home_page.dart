@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:remember_demos/demos/folders_with_priority.dart';
 import 'package:remember_demos/demos/folders_with_priority_unassigned_on_top.dart';
 import 'package:remember_demos/demos/folders_with_priority_unassigned_on_top2.dart';
+import 'package:remember_demos/demos/folders_with_priority_unassigned_on_top3.dart';
 import 'package:remember_demos/demos/home_screen_1.dart';
 import 'package:remember_demos/demos/home_screen_2.dart';
 import 'package:remember_demos/demos/home_screen_3.dart';
@@ -103,9 +104,10 @@ class _HomePageState extends State<HomePage> {
                   );
                 },
               ),
+              _subtitleText("Just folders and priorities"),
               const SizedBox(height: 16),
               ElevatedButton(
-                child: Text("Folders with Priority (Unscheduled at the top)"),
+                child: Text("Folders with Priority"),
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -115,6 +117,7 @@ class _HomePageState extends State<HomePage> {
                   );
                 },
               ),
+              _subtitleText("Unscheduled at the top"),
               const SizedBox(height: 16),
               ElevatedButton(
                 child: Text("Folders with Priority"),
@@ -127,6 +130,18 @@ class _HomePageState extends State<HomePage> {
                 },
               ),
               _subtitleText("Renamed the titles and labels"),
+              const SizedBox(height: 16),
+              ElevatedButton(
+                child: Text("Folders with Priority"),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (_) => FoldersWithPriorityUnscheduledOnTop3()),
+                  );
+                },
+              ),
+              _subtitleText("Looooooooots of tasks"),
               const SizedBox(height: 16),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24),

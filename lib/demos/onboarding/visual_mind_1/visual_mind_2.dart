@@ -13,9 +13,9 @@ class VisualMind2 extends StatefulWidget {
 class _VisualMind2State extends State<VisualMind2> {
   final plannerType = [
     "I am a\ngrandmaster\nplanner",
-    "I am an\nadvanced\nplanner",
+    "I am an\nexpert\nplanner",
+    "I am a\nadvanced\nplanner",
     "I am a\nnovice\nplanner",
-    "I am an\nunexperienced\nplanner",
   ];
 
   @override
