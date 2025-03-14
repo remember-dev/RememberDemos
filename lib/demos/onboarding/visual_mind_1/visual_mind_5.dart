@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:remember_demos/home_page.dart';
+import 'visual_mind_4.dart';
 import 'package:remember_demos/text_styles.dart';
 import 'package:remember_demos/widgets/Button.dart';
 import 'package:remember_demos/widgets/utils.dart';
 
 class VisualMind5 extends StatefulWidget {
-  const VisualMind5({super.key});
+  final String name;
+  const VisualMind5({super.key, required this.name});
 
   @override
   State<VisualMind5> createState() => _VisualMind5State();
@@ -21,7 +22,7 @@ class _VisualMind5State extends State<VisualMind5> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 64, vertical: 8),
             child: Text(
-              "How do you like to plan?",
+              "How do you like to plan, ${widget.name}?",
               style: semiBoldPrimary.copyWith(fontSize: 30),
               textAlign: TextAlign.center,
             ),
@@ -52,7 +53,9 @@ class _VisualMind5State extends State<VisualMind5> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (_) => HomePage()),
+                          MaterialPageRoute(
+                            builder: (_) => VisualMind4(name: widget.name),
+                          ),
                         );
                       },
                     ),
@@ -77,7 +80,9 @@ class _VisualMind5State extends State<VisualMind5> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (_) => HomePage()),
+                          MaterialPageRoute(
+                            builder: (_) => VisualMind4(name: widget.name),
+                          ),
                         );
                       },
                     ),
@@ -102,7 +107,9 @@ class _VisualMind5State extends State<VisualMind5> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (_) => HomePage()),
+                          MaterialPageRoute(
+                            builder: (_) => VisualMind4(name: widget.name),
+                          ),
                         );
                       },
                     ),

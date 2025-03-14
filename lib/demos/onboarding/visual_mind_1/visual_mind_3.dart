@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'visual_mind_4.dart';
+import 'visual_mind_5.dart';
 import 'package:remember_demos/text_styles.dart';
 import 'package:remember_demos/theme.dart';
 import 'package:remember_demos/widgets/utils.dart';
@@ -52,7 +52,7 @@ class _VisualMind3State extends State<VisualMind3> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (_) => VisualMind4(
+                                builder: (_) => VisualMind5(
                                       name: firstNameController.text.trim(),
                                     )),
                           );
