@@ -8,6 +8,8 @@ import 'package:remember_demos/demos/home_screen_2.dart';
 import 'package:remember_demos/demos/home_screen_3.dart';
 import 'package:remember_demos/demos/home_screen_4.dart';
 import 'package:remember_demos/demos/home_screen_5.dart';
+import 'package:remember_demos/demos/home_screen_6.dart';
+import 'package:remember_demos/demos/home_screen_7.dart';
 import 'package:remember_demos/demos/onboarding/onboarding_1.dart';
 import 'package:remember_demos/demos/onboarding/onboarding_2.dart';
 import 'package:remember_demos/demos/planning/planning_values_1.dart';
@@ -223,6 +225,34 @@ class _HomePageState extends State<HomePage> {
                 },
               ),
               _subtitleText("The Google-Calendar look alike"),
+              const SizedBox(height: 16),
+              ElevatedButton(
+                child: Text("Home Screen 6"),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => HomeScreen6(),
+                    ),
+                  );
+                },
+              ),
+              _subtitleText(
+                  "The Google-Calendar look alike but more polished up"),
+              const SizedBox(height: 16),
+              ElevatedButton(
+                child: Text("Home Screen 7"),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => HomeScreen7(),
+                    ),
+                  );
+                },
+              ),
+              _subtitleText(
+                  "The Google-Calendar look alike but more spacing for todo items"),
               const SizedBox(height: 16),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24),

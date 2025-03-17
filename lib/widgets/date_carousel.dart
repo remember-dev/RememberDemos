@@ -72,6 +72,7 @@ class _DateCarouselState extends State<DateCarousel> {
   Widget build(BuildContext context) {
     return Row(
       // mainAxisAlignment: MainAxisAlignment.spaceAround,
+      mainAxisSize: MainAxisSize.min, // Center inside of app bars
       children: [
         // The left button
         IconButton(
