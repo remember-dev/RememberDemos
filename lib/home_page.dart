@@ -10,6 +10,10 @@ import 'package:remember_demos/demos/home_screen_4.dart';
 import 'package:remember_demos/demos/home_screen_5.dart';
 import 'package:remember_demos/demos/home_screen_6.dart';
 import 'package:remember_demos/demos/home_screen_7.dart';
+import 'package:remember_demos/demos/home_screen_8.dart';
+import 'package:remember_demos/demos/home_screen_9.dart';
+import 'package:remember_demos/demos/home_screen_10.dart';
+import 'package:remember_demos/demos/navigation/navigation_1.dart';
 import 'package:remember_demos/demos/onboarding/onboarding_1.dart';
 import 'package:remember_demos/demos/onboarding/onboarding_2.dart';
 import 'package:remember_demos/demos/planning/planning_values_1.dart';
@@ -254,6 +258,48 @@ class _HomePageState extends State<HomePage> {
               _subtitleText(
                   "The Google-Calendar look alike but more spacing for todo items"),
               const SizedBox(height: 16),
+              ElevatedButton(
+                child: Text("Home Screen 8"),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => HomeScreen8(),
+                    ),
+                  );
+                },
+              ),
+              _subtitleText(
+                  "The Google-Calendar look alike but EVEN more spacing for todo items"),
+              const SizedBox(height: 16),
+              ElevatedButton(
+                child: Text("Home Screen 9"),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => Navigation1(page: HomeScreen9()),
+                    ),
+                  );
+                },
+              ),
+              _subtitleText(
+                  "With bottom app bar so that we can get a feel for spacing"),
+              const SizedBox(height: 16),
+              ElevatedButton(
+                child: Text("Home Screen 10"),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => Navigation1(page: HomeScreen10()),
+                    ),
+                  );
+                },
+              ),
+              _subtitleText(
+                  "Dynamic spacing on the to-do list with a max height"),
+              const SizedBox(height: 16),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24),
                 child: const Divider(color: Color.fromARGB(255, 13, 81, 199)),
@@ -324,6 +370,35 @@ class _HomePageState extends State<HomePage> {
               ),
               _subtitleText(
                   "The current planning process as of March 7th, 2025"),
+              const SizedBox(height: 16),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                child: const Divider(color: Color.fromARGB(255, 13, 81, 199)),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "Bottom Navigation Bar",
+                    style: semiBoldSecondary.copyWith(fontSize: 16),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 16),
+              ElevatedButton(
+                child: Text("Navigation bar 1 (current)"),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => Navigation1(),
+                    ),
+                  );
+                },
+              ),
+              _subtitleText(
+                  "The current navigation bar as of March 20th, 2025"),
               const SizedBox(height: 64),
             ],
           ),

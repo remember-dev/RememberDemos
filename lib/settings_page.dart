@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:remember_demos/main.dart';
 import 'package:remember_demos/text_styles.dart';
+import 'package:remember_demos/widgets/screen_size.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -66,6 +67,21 @@ class _SettingsPageState extends State<SettingsPage> {
                 },
               ),
             ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: const Divider(),
+            ),
+            Center(
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => ScreenSize()),
+                  );
+                },
+                child: Text("Sceen Sizer"),
+              ),
+            )
           ],
         ),
       ),

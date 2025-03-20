@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:remember_demos/entities/basic_task.dart';
 import 'package:remember_demos/text_styles.dart';
 import 'package:remember_demos/theme.dart';
+import 'package:remember_demos/widgets/calendar_scheduler.dart';
 import 'package:remember_demos/widgets/date_carousel.dart';
-import 'package:remember_demos/widgets/google_calendar_scheduler.dart';
 import 'package:remember_demos/widgets/left_menu.dart';
 import 'package:remember_demos/widgets/task_row.dart';
 import 'package:remember_demos/widgets/utils.dart';
@@ -92,7 +92,7 @@ class _HomeScreen5State extends State<HomeScreen5> {
       );
     }
 
-    return GoogleCalendarScheduler(
+    return CalendarScheduler(
       tasks: scheduledTasks,
       dateToShow: _dateToShow,
     );
