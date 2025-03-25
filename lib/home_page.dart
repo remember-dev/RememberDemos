@@ -1,24 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:remember_demos/demos/folders_with_priority.dart';
-import 'package:remember_demos/demos/folders_with_priority_unassigned_on_top.dart';
-import 'package:remember_demos/demos/folders_with_priority_unassigned_on_top2.dart';
-import 'package:remember_demos/demos/folders_with_priority_unassigned_on_top3.dart';
-import 'package:remember_demos/demos/home_screen_1.dart';
-import 'package:remember_demos/demos/home_screen_2.dart';
-import 'package:remember_demos/demos/home_screen_3.dart';
-import 'package:remember_demos/demos/home_screen_4.dart';
-import 'package:remember_demos/demos/home_screen_5.dart';
-import 'package:remember_demos/demos/home_screen_6.dart';
-import 'package:remember_demos/demos/home_screen_7.dart';
-import 'package:remember_demos/demos/home_screen_8.dart';
-import 'package:remember_demos/demos/home_screen_9.dart';
-import 'package:remember_demos/demos/home_screen_10.dart';
+import 'package:remember_demos/demos/folders_and_priorities/folders_with_priority.dart';
+import 'package:remember_demos/demos/folders_and_priorities/folders_with_priority_unassigned_on_top.dart';
+import 'package:remember_demos/demos/folders_and_priorities/folders_with_priority_unassigned_on_top2.dart';
+import 'package:remember_demos/demos/folders_and_priorities/folders_with_priority_unassigned_on_top3.dart';
+import 'package:remember_demos/demos/home_screen/home_screen_1.dart';
+import 'package:remember_demos/demos/home_screen/home_screen_2.dart';
+import 'package:remember_demos/demos/home_screen/home_screen_3.dart';
+import 'package:remember_demos/demos/home_screen/home_screen_4.dart';
+import 'package:remember_demos/demos/home_screen/home_screen_5.dart';
+import 'package:remember_demos/demos/home_screen/home_screen_6.dart';
+import 'package:remember_demos/demos/home_screen/home_screen_7.dart';
+import 'package:remember_demos/demos/home_screen/home_screen_8.dart';
+import 'package:remember_demos/demos/home_screen/home_screen_9.dart';
+import 'package:remember_demos/demos/home_screen/home_screen_10.dart';
 import 'package:remember_demos/demos/navigation/navigation_1.dart';
 import 'package:remember_demos/demos/onboarding/onboarding_1.dart';
 import 'package:remember_demos/demos/onboarding/onboarding_2.dart';
 import 'package:remember_demos/demos/planning/planning_values_1.dart';
-import 'package:remember_demos/demos/tasks_with_priority.dart';
-import 'package:remember_demos/demos/tasks_with_priority_reorderable.dart';
+import 'package:remember_demos/demos/folders_and_priorities/tasks_with_priority.dart';
+import 'package:remember_demos/demos/folders_and_priorities/tasks_with_priority_reorderable.dart';
+import 'package:remember_demos/demos/task_creation/quick_task_bar_2.dart';
+import 'package:remember_demos/demos/task_creation/quick_task_bar_current.dart';
+import 'package:remember_demos/demos/task_creation/quick_task_wrapper.dart';
 import 'package:remember_demos/settings_page.dart';
 import 'package:remember_demos/text_styles.dart';
 
@@ -370,6 +373,52 @@ class _HomePageState extends State<HomePage> {
               ),
               _subtitleText(
                   "The current planning process as of March 7th, 2025"),
+              const SizedBox(height: 16),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                child: const Divider(color: Color.fromARGB(255, 13, 81, 199)),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "Task Creation",
+                    style: semiBoldSecondary.copyWith(fontSize: 16),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 16),
+              ElevatedButton(
+                child: Text("Quick Task Bar 1 (current)"),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => QuickTaskWrapper(
+                        quickTaskBarType: QuickTaskBarCurrent,
+                      ),
+                    ),
+                  );
+                },
+              ),
+              _subtitleText(
+                  "The current Quick Task Bar as of March 25th, 2025"),
+              const SizedBox(height: 16),
+              ElevatedButton(
+                child: Text("Quick Task Bar 2"),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => QuickTaskWrapper(
+                        quickTaskBarType: QuickTaskBar2,
+                      ),
+                    ),
+                  );
+                },
+              ),
+              _subtitleText("The Quick Task Bar 2 from a design by Lynn"),
               const SizedBox(height: 16),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24),

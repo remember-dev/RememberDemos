@@ -1,26 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:remember_demos/demos/navigation/test_navigation_page.dart';
-import 'package:remember_demos/demos/task_creation/quick_task_bar_current.dart';
+import 'package:remember_demos/demos/task_creation/quick_task_bar_1.dart';
+import 'package:remember_demos/demos/task_creation/quick_task_bar_2.dart';
 import 'package:remember_demos/text_styles.dart';
-import 'package:remember_demos/widgets/left_menu.dart';
 
-class Navigation1 extends StatefulWidget {
-  /// `page` is a [Widget] that must use the [MainScreenMixin] to keep the app
-  /// consistent on when the bottom app bar is shown. This is a guard to prevent
-  /// other pages from being shown with the bottom app bar when there should
-  /// only ever be one.
-  final Widget page;
+Widget createQuickTaskBar(
+    Type type, VoidCallback onClose, VoidCallback onSubmit) {
+  if (type == QuickTaskBar1) {
+    return QuickTaskBar1(onClose: onClose, onSubmit: onSubmit);
+  } else if (type == QuickTaskBar2) {
+    return QuickTaskBar2(onClose: onClose, onSubmit: onSubmit);
+  }
 
-  final int index;
+  throw Exception("aaaaaaaaaaaaahhhhhhhhhhhh!");
+}
 
-  const Navigation1({
+class QuickTaskWrapper extends StatefulWidget {
+  final Type quickTaskBarType;
+
+  const QuickTaskWrapper({
     super.key,
-    this.page = testNavigationPage,
-    this.index = HOME_SCREEN_INDEX,
+    required this.quickTaskBarType,
   });
 
   @override
-  State<Navigation1> createState() => Navigation1State();
+  State<QuickTaskWrapper> createState() => _QuickTaskWrapperState();
 }
 
 const int LEFT_MENU_INDEX = 0;
@@ -30,9 +34,9 @@ const int SEARCH_SCREEN_INDEX = 3;
 
 const double NAV_BAR_HEIGHT = 80;
 
-class Navigation1State extends State<Navigation1> {
+class _QuickTaskWrapperState extends State<QuickTaskWrapper> {
   int highlightedIndex = HOME_SCREEN_INDEX;
-  late Widget currentPage = widget.page;
+  late Widget currentPage = testNavigationPage;
   PreferredSizeWidget? currentAppBar;
   bool quick = false;
   OverlayEntry? overlayEntry;
@@ -70,10 +74,6 @@ class Navigation1State extends State<Navigation1> {
       child: Scaffold(
         key: scaffoldKey,
         resizeToAvoidBottomInset: true,
-        drawer: SizedBox(
-          width: MediaQuery.of(context).size.width / 2,
-          child: const LeftMenu(),
-        ),
 
         // The app bar
         appBar: currentAppBar,
@@ -87,9 +87,10 @@ class Navigation1State extends State<Navigation1> {
               ),
             ),
             quick
-                ? QuickTaskBarCurrent(
-                    onClose: onQuickTaskClosed,
-                    onSubmit: onQuickTaskSubmit,
+                ? createQuickTaskBar(
+                    widget.quickTaskBarType,
+                    onQuickTaskClosed,
+                    onQuickTaskSubmit,
                   )
                 : const SizedBox(),
           ],
