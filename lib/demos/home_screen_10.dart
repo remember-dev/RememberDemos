@@ -98,18 +98,6 @@ class _HomeScreen10State extends State<HomeScreen10> {
         ),
         actions: [
           IconButton(
-            onPressed: () {
-              setState(() {
-                toDoTasks = List.generate(
-                    rand.nextInt(10),
-                    (i) => randomBasicTask(
-                        taskType: 1, scheduledTime: randomScheduledTime))
-                  ..sort((a, b) => a.priority.compareTo(b.priority));
-              });
-            },
-            icon: Icon(Icons.refresh),
-          ),
-          IconButton(
             icon: const Icon(Icons.calendar_month_outlined),
             onPressed: onCalendarPressed,
           ),
@@ -127,6 +115,18 @@ class _HomeScreen10State extends State<HomeScreen10> {
         dateToShow: _dateToShow,
       ),
       drawer: LeftMenu(),
+      floatingActionButton: FloatingActionButton.small(
+        onPressed: () {
+          setState(() {
+            toDoTasks = List.generate(
+                rand.nextInt(10),
+                (i) => randomBasicTask(
+                    taskType: 1, scheduledTime: randomScheduledTime))
+              ..sort((a, b) => a.priority.compareTo(b.priority));
+          });
+        },
+        child: Icon(Icons.refresh),
+      ),
     );
   }
 
