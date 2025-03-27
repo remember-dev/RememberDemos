@@ -19,8 +19,8 @@ import 'package:remember_demos/demos/onboarding/onboarding_2.dart';
 import 'package:remember_demos/demos/planning/planning_values_1.dart';
 import 'package:remember_demos/demos/folders_and_priorities/tasks_with_priority.dart';
 import 'package:remember_demos/demos/folders_and_priorities/tasks_with_priority_reorderable.dart';
+import 'package:remember_demos/demos/task_creation/quick_task_bar_1.dart';
 import 'package:remember_demos/demos/task_creation/quick_task_bar_2.dart';
-import 'package:remember_demos/demos/task_creation/quick_task_bar_current.dart';
 import 'package:remember_demos/demos/task_creation/quick_task_wrapper.dart';
 import 'package:remember_demos/settings_page.dart';
 import 'package:remember_demos/text_styles.dart';
@@ -73,71 +73,34 @@ class _HomePageState extends State<HomePage> {
               //
               title("Folders and Prioritization"),
               const SizedBox(height: 16),
-              ElevatedButton(
-                child: Text("Tasks with Priority (no folders) (Reorderable)"),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (_) => TasksWithPriority()),
-                  );
-                },
+              button(
+                "Tasks with Priority (no folders) (Reorderable)",
+                TasksWithPriority(),
               ),
               const SizedBox(height: 16),
-              ElevatedButton(
-                child: Text("Tasks with Priority (no folders) (Drag&Drop)"),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (_) => TasksWithPriorityDD()),
-                  );
-                },
+              button(
+                "Tasks with Priority (no folders) (Drag&Drop)",
+                TasksWithPriorityDD(),
               ),
               const SizedBox(height: 16),
-              ElevatedButton(
-                child: Text("Folders with Priority"),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (_) => FoldersWithPriority()),
-                  );
-                },
-              ),
+              button("Folders with Priority", FoldersWithPriority()),
               subtitle("Just folders and priorities"),
               const SizedBox(height: 16),
-              ElevatedButton(
-                child: Text("Folders with Priority"),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => FoldersWithPriorityUnscheduledOnTop(),
-                    ),
-                  );
-                },
+              button(
+                "Unscheduled Tasks with Priority",
+                FoldersWithPriorityUnscheduledOnTop(),
               ),
               subtitle("Unscheduled at the top"),
               const SizedBox(height: 16),
-              ElevatedButton(
-                child: Text("Folders with Priority"),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (_) => FoldersWithPriorityUnscheduledOnTop2()),
-                  );
-                },
+              button(
+                "Unscheduled Tasks with Priority",
+                FoldersWithPriorityUnscheduledOnTop2(),
               ),
               subtitle("Renamed the titles and labels"),
               const SizedBox(height: 16),
-              ElevatedButton(
-                child: Text("Folders with Priority"),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (_) => FoldersWithPriorityUnscheduledOnTop3()),
-                  );
-                },
+              button(
+                "Unscheduled Tasks with Priority",
+                FoldersWithPriorityUnscheduledOnTop3(),
               ),
               subtitle("Looooooooots of tasks"),
               const SizedBox(height: 16),
@@ -145,218 +108,70 @@ class _HomePageState extends State<HomePage> {
               //
               title("Home Screen"),
               const SizedBox(height: 16),
-              ElevatedButton(
-                child: Text("Home Screen 1 (current)"),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => HomeScreen1(),
-                    ),
-                  );
-                },
-              ),
+              button("Home Screen 1 (current)", HomeScreen1()),
               subtitle("The current home screen as of March 6, 2025."),
               const SizedBox(height: 16),
-              ElevatedButton(
-                child: Text("Home Screen 2"),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => HomeScreen2(),
-                    ),
-                  );
-                },
-              ),
+              button("Home Screen 2", Navigation1(page: HomeScreen2())),
               subtitle("Switch in top right instead of user setting."),
               const SizedBox(height: 16),
-              ElevatedButton(
-                child: Text("Home Screen 3"),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => HomeScreen3(),
-                    ),
-                  );
-                },
-              ),
+              button("Home Screen 3", Navigation1(page: HomeScreen3())),
               subtitle(
                   "No bottom expansion tile. Switch shows what was in the bottom tile (Future and delegated tasks)"),
               const SizedBox(height: 16),
-              ElevatedButton(
-                child: Text("Home Screen 4"),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => HomeScreen4(),
-                    ),
-                  );
-                },
-              ),
+              button("Home Screen 4", Navigation1(page: HomeScreen4())),
               subtitle("The 'Scheduled Tasks' tile is NOT expandable"),
               const SizedBox(height: 16),
-              ElevatedButton(
-                child: Text("Home Screen 5"),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => HomeScreen5(),
-                    ),
-                  );
-                },
-              ),
+              button("Home Screen 5", Navigation1(page: HomeScreen5())),
               subtitle("The Google-Calendar look alike"),
               const SizedBox(height: 16),
-              ElevatedButton(
-                child: Text("Home Screen 6"),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => HomeScreen6(),
-                    ),
-                  );
-                },
-              ),
+              button("Home Screen 6", Navigation1(page: HomeScreen6())),
               subtitle("The Google-Calendar look alike but more polished up"),
               const SizedBox(height: 16),
-              ElevatedButton(
-                child: Text("Home Screen 7"),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => HomeScreen7(),
-                    ),
-                  );
-                },
-              ),
+              button("Home Screen 7", Navigation1(page: HomeScreen7())),
               subtitle(
                   "The Google-Calendar look alike but more spacing for todo items"),
               const SizedBox(height: 16),
-              ElevatedButton(
-                child: Text("Home Screen 8"),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => HomeScreen8(),
-                    ),
-                  );
-                },
-              ),
+              button("Home Screen 8", Navigation1(page: HomeScreen8())),
               subtitle(
                   "The Google-Calendar look alike but EVEN more spacing for todo items"),
               const SizedBox(height: 16),
-              ElevatedButton(
-                child: Text("Home Screen 9"),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => Navigation1(page: HomeScreen9()),
-                    ),
-                  );
-                },
-              ),
+              button("Home Screen 9", Navigation1(page: HomeScreen9())),
               subtitle(
                   "With bottom app bar so that we can get a feel for spacing"),
               const SizedBox(height: 16),
-              ElevatedButton(
-                child: Text("Home Screen 10"),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => Navigation1(page: HomeScreen10()),
-                    ),
-                  );
-                },
-              ),
+              button("Home Screen 10", Navigation1(page: HomeScreen10())),
               subtitle("Dynamic spacing on the to-do list with a max height"),
               const SizedBox(height: 16),
 
               //
               title("Onboarding"),
               const SizedBox(height: 16),
-              ElevatedButton(
-                child: Text("Onboarding 1 (current)"),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => Onboarding1(),
-                    ),
-                  );
-                },
-              ),
+              button("Onboarding 1 (current)", Onboarding1()),
               subtitle("The current onboarding process as of March 7th, 2025"),
               const SizedBox(height: 16),
-              ElevatedButton(
-                child: Text("Onboarding 2"),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => Onboarding2(),
-                    ),
-                  );
-                },
-              ),
+              button("Onboarding 2", Onboarding2()),
               subtitle("An idea of onboarding that mimics VisualMind"),
               const SizedBox(height: 16),
 
               //
               title("Planning Process"),
               const SizedBox(height: 16),
-              ElevatedButton(
-                child: Text("Planning Process 1 (current)"),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => PlanningValues1(),
-                    ),
-                  );
-                },
-              ),
+              button("Planning Process 1 (current)", PlanningValues1()),
               subtitle("The current planning process as of March 7th, 2025"),
               const SizedBox(height: 16),
 
               //
               title("Task Creation"),
               const SizedBox(height: 16),
-              ElevatedButton(
-                child: Text("Quick Task Bar 1 (current)"),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => QuickTaskWrapper(
-                        quickTaskBarType: QuickTaskBarCurrent,
-                      ),
-                    ),
-                  );
-                },
+              button(
+                "Quick Task Bar 1 (current)",
+                QuickTaskWrapper(quickTaskBarType: QuickTaskBar1),
               ),
               subtitle("The current Quick Task Bar as of March 25th, 2025"),
               const SizedBox(height: 16),
-              ElevatedButton(
-                child: Text("Quick Task Bar 2"),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => QuickTaskWrapper(
-                        quickTaskBarType: QuickTaskBar2,
-                      ),
-                    ),
-                  );
-                },
+              button(
+                "Quick Task Bar 2",
+                QuickTaskWrapper(quickTaskBarType: QuickTaskBar2),
               ),
               subtitle("The Quick Task Bar 2 from a design by Lynn"),
               const SizedBox(height: 16),
@@ -364,23 +179,22 @@ class _HomePageState extends State<HomePage> {
               //
               title("Bottom Navigation Bar"),
               const SizedBox(height: 16),
-              ElevatedButton(
-                child: Text("Navigation bar 1 (current)"),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => Navigation1(),
-                    ),
-                  );
-                },
-              ),
+              button("Navigation bar 1 (current)", Navigation1()),
               subtitle("The current navigation bar as of March 20th, 2025"),
               const SizedBox(height: 64),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  Widget button(String text, Widget destination) {
+    return ElevatedButton(
+      child: Text(text),
+      onPressed: () {
+        Navigator.push(context, MaterialPageRoute(builder: (_) => destination));
+      },
     );
   }
 
