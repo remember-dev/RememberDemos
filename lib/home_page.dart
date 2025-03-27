@@ -69,20 +69,9 @@ class _HomePageState extends State<HomePage> {
                 style: mediumPrimary,
               ),
               const SizedBox(height: 32),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24),
-                child: const Divider(color: Color.fromARGB(255, 13, 81, 199)),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24),
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    "Folders and Prioritization",
-                    style: semiBoldSecondary.copyWith(fontSize: 16),
-                  ),
-                ),
-              ),
+
+              //
+              title("Folders and Prioritization"),
               const SizedBox(height: 16),
               ElevatedButton(
                 child: Text("Tasks with Priority (no folders) (Reorderable)"),
@@ -113,7 +102,7 @@ class _HomePageState extends State<HomePage> {
                   );
                 },
               ),
-              _subtitleText("Just folders and priorities"),
+              subtitle("Just folders and priorities"),
               const SizedBox(height: 16),
               ElevatedButton(
                 child: Text("Folders with Priority"),
@@ -126,7 +115,7 @@ class _HomePageState extends State<HomePage> {
                   );
                 },
               ),
-              _subtitleText("Unscheduled at the top"),
+              subtitle("Unscheduled at the top"),
               const SizedBox(height: 16),
               ElevatedButton(
                 child: Text("Folders with Priority"),
@@ -138,7 +127,7 @@ class _HomePageState extends State<HomePage> {
                   );
                 },
               ),
-              _subtitleText("Renamed the titles and labels"),
+              subtitle("Renamed the titles and labels"),
               const SizedBox(height: 16),
               ElevatedButton(
                 child: Text("Folders with Priority"),
@@ -150,22 +139,11 @@ class _HomePageState extends State<HomePage> {
                   );
                 },
               ),
-              _subtitleText("Looooooooots of tasks"),
+              subtitle("Looooooooots of tasks"),
               const SizedBox(height: 16),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24),
-                child: const Divider(color: Color.fromARGB(255, 13, 81, 199)),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24),
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    "Home Screen",
-                    style: semiBoldSecondary.copyWith(fontSize: 16),
-                  ),
-                ),
-              ),
+
+              //
+              title("Home Screen"),
               const SizedBox(height: 16),
               ElevatedButton(
                 child: Text("Home Screen 1 (current)"),
@@ -178,7 +156,7 @@ class _HomePageState extends State<HomePage> {
                   );
                 },
               ),
-              _subtitleText("The current home screen as of March 6, 2025."),
+              subtitle("The current home screen as of March 6, 2025."),
               const SizedBox(height: 16),
               ElevatedButton(
                 child: Text("Home Screen 2"),
@@ -191,7 +169,7 @@ class _HomePageState extends State<HomePage> {
                   );
                 },
               ),
-              _subtitleText("Switch in top right instead of user setting."),
+              subtitle("Switch in top right instead of user setting."),
               const SizedBox(height: 16),
               ElevatedButton(
                 child: Text("Home Screen 3"),
@@ -204,7 +182,7 @@ class _HomePageState extends State<HomePage> {
                   );
                 },
               ),
-              _subtitleText(
+              subtitle(
                   "No bottom expansion tile. Switch shows what was in the bottom tile (Future and delegated tasks)"),
               const SizedBox(height: 16),
               ElevatedButton(
@@ -218,7 +196,7 @@ class _HomePageState extends State<HomePage> {
                   );
                 },
               ),
-              _subtitleText("The 'Scheduled Tasks' tile is NOT expandable"),
+              subtitle("The 'Scheduled Tasks' tile is NOT expandable"),
               const SizedBox(height: 16),
               ElevatedButton(
                 child: Text("Home Screen 5"),
@@ -231,7 +209,7 @@ class _HomePageState extends State<HomePage> {
                   );
                 },
               ),
-              _subtitleText("The Google-Calendar look alike"),
+              subtitle("The Google-Calendar look alike"),
               const SizedBox(height: 16),
               ElevatedButton(
                 child: Text("Home Screen 6"),
@@ -244,8 +222,7 @@ class _HomePageState extends State<HomePage> {
                   );
                 },
               ),
-              _subtitleText(
-                  "The Google-Calendar look alike but more polished up"),
+              subtitle("The Google-Calendar look alike but more polished up"),
               const SizedBox(height: 16),
               ElevatedButton(
                 child: Text("Home Screen 7"),
@@ -258,7 +235,7 @@ class _HomePageState extends State<HomePage> {
                   );
                 },
               ),
-              _subtitleText(
+              subtitle(
                   "The Google-Calendar look alike but more spacing for todo items"),
               const SizedBox(height: 16),
               ElevatedButton(
@@ -272,7 +249,7 @@ class _HomePageState extends State<HomePage> {
                   );
                 },
               ),
-              _subtitleText(
+              subtitle(
                   "The Google-Calendar look alike but EVEN more spacing for todo items"),
               const SizedBox(height: 16),
               ElevatedButton(
@@ -286,7 +263,7 @@ class _HomePageState extends State<HomePage> {
                   );
                 },
               ),
-              _subtitleText(
+              subtitle(
                   "With bottom app bar so that we can get a feel for spacing"),
               const SizedBox(height: 16),
               ElevatedButton(
@@ -300,23 +277,11 @@ class _HomePageState extends State<HomePage> {
                   );
                 },
               ),
-              _subtitleText(
-                  "Dynamic spacing on the to-do list with a max height"),
+              subtitle("Dynamic spacing on the to-do list with a max height"),
               const SizedBox(height: 16),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24),
-                child: const Divider(color: Color.fromARGB(255, 13, 81, 199)),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24),
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    "Onboarding",
-                    style: semiBoldSecondary.copyWith(fontSize: 16),
-                  ),
-                ),
-              ),
+
+              //
+              title("Onboarding"),
               const SizedBox(height: 16),
               ElevatedButton(
                 child: Text("Onboarding 1 (current)"),
@@ -329,8 +294,7 @@ class _HomePageState extends State<HomePage> {
                   );
                 },
               ),
-              _subtitleText(
-                  "The current onboarding process as of March 7th, 2025"),
+              subtitle("The current onboarding process as of March 7th, 2025"),
               const SizedBox(height: 16),
               ElevatedButton(
                 child: Text("Onboarding 2"),
@@ -343,22 +307,11 @@ class _HomePageState extends State<HomePage> {
                   );
                 },
               ),
-              _subtitleText("An idea of onboarding that mimics VisualMind"),
+              subtitle("An idea of onboarding that mimics VisualMind"),
               const SizedBox(height: 16),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24),
-                child: const Divider(color: Color.fromARGB(255, 13, 81, 199)),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24),
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    "Planning Process",
-                    style: semiBoldSecondary.copyWith(fontSize: 16),
-                  ),
-                ),
-              ),
+
+              //
+              title("Planning Process"),
               const SizedBox(height: 16),
               ElevatedButton(
                 child: Text("Planning Process 1 (current)"),
@@ -371,23 +324,11 @@ class _HomePageState extends State<HomePage> {
                   );
                 },
               ),
-              _subtitleText(
-                  "The current planning process as of March 7th, 2025"),
+              subtitle("The current planning process as of March 7th, 2025"),
               const SizedBox(height: 16),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24),
-                child: const Divider(color: Color.fromARGB(255, 13, 81, 199)),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24),
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    "Task Creation",
-                    style: semiBoldSecondary.copyWith(fontSize: 16),
-                  ),
-                ),
-              ),
+
+              //
+              title("Task Creation"),
               const SizedBox(height: 16),
               ElevatedButton(
                 child: Text("Quick Task Bar 1 (current)"),
@@ -402,8 +343,7 @@ class _HomePageState extends State<HomePage> {
                   );
                 },
               ),
-              _subtitleText(
-                  "The current Quick Task Bar as of March 25th, 2025"),
+              subtitle("The current Quick Task Bar as of March 25th, 2025"),
               const SizedBox(height: 16),
               ElevatedButton(
                 child: Text("Quick Task Bar 2"),
@@ -418,22 +358,11 @@ class _HomePageState extends State<HomePage> {
                   );
                 },
               ),
-              _subtitleText("The Quick Task Bar 2 from a design by Lynn"),
+              subtitle("The Quick Task Bar 2 from a design by Lynn"),
               const SizedBox(height: 16),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24),
-                child: const Divider(color: Color.fromARGB(255, 13, 81, 199)),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24),
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    "Bottom Navigation Bar",
-                    style: semiBoldSecondary.copyWith(fontSize: 16),
-                  ),
-                ),
-              ),
+
+              //
+              title("Bottom Navigation Bar"),
               const SizedBox(height: 16),
               ElevatedButton(
                 child: Text("Navigation bar 1 (current)"),
@@ -446,8 +375,7 @@ class _HomePageState extends State<HomePage> {
                   );
                 },
               ),
-              _subtitleText(
-                  "The current navigation bar as of March 20th, 2025"),
+              subtitle("The current navigation bar as of March 20th, 2025"),
               const SizedBox(height: 64),
             ],
           ),
@@ -456,7 +384,28 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _subtitleText(String text) {
+  Widget title(String text) {
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24),
+          child: const Divider(color: Color.fromARGB(255, 13, 81, 199)),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24),
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              text,
+              style: semiBoldSecondary.copyWith(fontSize: 16),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget subtitle(String text) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24),
       child: Text(text, textAlign: TextAlign.center),

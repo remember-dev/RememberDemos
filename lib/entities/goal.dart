@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_guid/flutter_guid.dart';
 import 'package:remember_demos/entities/base_entity.dart';
+import 'package:remember_demos/widgets/utils.dart';
 
 class Goal extends BaseEntity<Goal> {
   final Guid valueId;
@@ -30,7 +31,7 @@ class Goal extends BaseEntity<Goal> {
       'valueId': valueId.toString(),
       'title': title,
       'description': description,
-      'color': color,
+      'color': colorToHex(color),
       'customGoal': customGoal,
       'userId': userId?.toString(),
       'completed': completed,

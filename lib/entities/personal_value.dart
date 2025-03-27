@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_guid/flutter_guid.dart';
 import 'package:remember_demos/entities/base_entity.dart';
+import 'package:remember_demos/widgets/utils.dart';
 
 class PersonalValue extends BaseEntity<PersonalValue> {
   String title;
@@ -41,7 +42,7 @@ class PersonalValue extends BaseEntity<PersonalValue> {
       ...super.toMap(),
       'title': title,
       'description': description,
-      'color': color,
+      'color': colorToHex(color),
       'customValue': customValue ? 1 : 0,
       'userId': userId?.toString().toUpperCase(),
       'categoryId': categoryId.toString().toUpperCase(),

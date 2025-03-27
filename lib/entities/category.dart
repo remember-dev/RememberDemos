@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_guid/flutter_guid.dart';
 import 'package:remember_demos/entities/base_entity.dart';
+import 'package:remember_demos/widgets/utils.dart';
 
 class Category extends BaseEntity<Category> {
   final String title;
@@ -31,7 +32,7 @@ class Category extends BaseEntity<Category> {
     return {
       ...super.toMap(),
       'title': title,
-      'color': color,
+      'color': colorToHex(color),
       'position': position
     };
   }

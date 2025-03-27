@@ -123,34 +123,32 @@ class _Planning extends State<PlanningValues1> {
                   child: Wrap(
                     spacing: 8,
                     children: [
-                      ...getPersonalValuesByCategory(category).expand(
+                      ...getPersonalValuesByCategory(category).map(
                         (value) {
                           textFields[value.id.toString()] =
                               TextEditingController();
-                          return [
-                            SelectableButton(
-                              selected: selected[value.id.toString()] == true,
-                              selectedColor: category.color,
-                              onPressed: () {
-                                onChanged(value);
-                                setState(() {});
-                              },
-                              icon: value.customValue && !isEditing(value)
-                                  ? InkWell(
-                                      onTap: () {
-                                        setState(() {
-                                          editingCustomValue[
-                                              value.id.toString()] = true;
-                                        });
-                                      },
-                                      child: const Icon(Icons.edit_outlined),
-                                    )
-                                  : null,
-                              label: isEditing(value)
-                                  ? getEditContainer(category, value)
-                                  : Text(value.title.toUpperCase()),
-                            ),
-                          ];
+                          return SelectableButton(
+                            selected: selected[value.id.toString()] == true,
+                            selectedColor: category.color,
+                            onPressed: () {
+                              onChanged(value);
+                              setState(() {});
+                            },
+                            icon: value.customValue && !isEditing(value)
+                                ? InkWell(
+                                    onTap: () {
+                                      setState(() {
+                                        editingCustomValue[
+                                            value.id.toString()] = true;
+                                      });
+                                    },
+                                    child: const Icon(Icons.edit_outlined),
+                                  )
+                                : null,
+                            label: isEditing(value)
+                                ? getEditContainer(category, value)
+                                : Text(value.title.toUpperCase()),
+                          );
                         },
                       ),
                       getEditContainer(category, null),

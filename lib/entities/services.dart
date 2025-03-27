@@ -71,6 +71,7 @@ List<Category> categories = [
     position: 7,
   ),
 ];
+// ]..sort((c1, c2) => c1.title.compareTo(c2.title));
 
 List<PersonalValue> personalValues = [
   PersonalValue(
@@ -433,7 +434,7 @@ List<PersonalValue> personalValues = [
     lastModified: DateTime.now(),
     categoryId: Guid("86980D51-BD93-4455-89D6-FECE3E47A278"),
   ),
-];
+]..sort((p1, p2) => p1.title.compareTo(p2.title));
 
 List<Goal> goals = [
   Goal(
@@ -2878,4 +2879,4 @@ List<Goal> goals = [
     color: Color(0xFF90FCEA),
     lastModified: DateTime.now(),
   ),
-];
+]..sort((g1, g2) => g1.title.compareTo(g2.title));

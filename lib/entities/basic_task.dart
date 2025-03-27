@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_guid/flutter_guid.dart';
 import 'package:remember_demos/entities/base_entity.dart';
+import 'package:remember_demos/widgets/utils.dart';
 
 class BasicTask extends BaseEntity<BasicTask> {
   Guid userId;
@@ -99,7 +100,7 @@ class BasicTask extends BaseEntity<BasicTask> {
       'isGoalTask': isGoalTask,
       'isDelegatedTask': isDelegatedTask,
       'goalId': goalId?.toString(),
-      'color': color,
+      'color': colorToHex(color),
       'priority': priority,
       'orderGroup': orderGroup,
       "dueDate": dueDate?.toUtc().toIso8601String(),
