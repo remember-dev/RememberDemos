@@ -12,13 +12,31 @@ class DateCarousel extends StatefulWidget {
   /// Callback for when the date changes
   final Function(DateTime) onDateChanged;
   final bool byMonths;
+  final double fontSize;
 
   const DateCarousel({
     super.key,
     this.currentDate,
     required this.onDateChanged,
     this.byMonths = false,
+    this.fontSize = 20,
   });
+
+  factory DateCarousel.small({
+    Key? key,
+    DateTime? currentDate,
+    required Function(DateTime) onDateChanged,
+    bool byMonths = false,
+    double? fontSize,
+  }) {
+    return DateCarousel(
+      key: key,
+      currentDate: currentDate,
+      onDateChanged: onDateChanged,
+      byMonths: byMonths,
+      fontSize: fontSize ?? 16,
+    );
+  }
 
   @override
   State<StatefulWidget> createState() => _DateCarouselState();
@@ -78,7 +96,7 @@ class _DateCarouselState extends State<DateCarousel> {
         IconButton(
           key: const Key('TaskEdit_TextButton_PreviusDay'),
           onPressed: _onPressLeft,
-          icon: const Icon(Icons.arrow_back_ios_new),
+          icon: Icon(Icons.arrow_back_ios_new, size: widget.fontSize),
         ),
 
         // The Day text
@@ -86,7 +104,7 @@ class _DateCarouselState extends State<DateCarousel> {
           Text(
             DateFormat('EEE ').format(_currentDate),
             style: semiBoldSecondary.copyWith(
-              fontSize: 20,
+              fontSize: widget.fontSize,
               color: _isToday() ? RememberColors.lightBlue : Colors.black,
             ),
           ),
@@ -95,7 +113,7 @@ class _DateCarouselState extends State<DateCarousel> {
         Text(
           DateFormat('MMM ').format(_currentDate),
           style: semiBoldSecondary.copyWith(
-            fontSize: 20,
+            fontSize: widget.fontSize,
             color: _isToday() ? RememberColors.lightBlue : Colors.black,
           ),
         ),
@@ -108,23 +126,24 @@ class _DateCarouselState extends State<DateCarousel> {
                 child: Text(
                   DateFormat('d').format(_currentDate),
                   style: semiBoldSecondary.copyWith(
-                    fontSize: 20,
+                    fontSize: widget.fontSize,
                     color: _isToday() ? RememberColors.lightBlue : Colors.black,
                   ),
                 ),
               )
-            : Text(" ", style: semiBoldSecondary.copyWith(fontSize: 20)),
+            : Text(" ",
+                style: semiBoldSecondary.copyWith(fontSize: widget.fontSize)),
         if (!widget.byMonths)
           Text(',',
               style: semiBoldSecondary.copyWith(
-                fontSize: 20,
+                fontSize: widget.fontSize,
                 color: _isToday() ? RememberColors.lightBlue : Colors.black,
               )),
         // The years text
         Text(
           DateFormat(' yyyy').format(_currentDate),
           style: semiBoldSecondary.copyWith(
-            fontSize: 20,
+            fontSize: widget.fontSize,
             color: _isToday() ? RememberColors.lightBlue : Colors.black,
           ),
         ),
@@ -133,7 +152,7 @@ class _DateCarouselState extends State<DateCarousel> {
         IconButton(
           key: const Key('TaskEdit_TextButton_NextDay'),
           onPressed: _onPressRight,
-          icon: const Icon(Icons.arrow_forward_ios),
+          icon: Icon(Icons.arrow_forward_ios, size: widget.fontSize),
         ),
       ],
     );

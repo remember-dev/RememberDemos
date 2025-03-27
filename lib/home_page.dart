@@ -4,6 +4,7 @@ import 'package:remember_demos/demos/folders_and_priorities/folders_with_priorit
 import 'package:remember_demos/demos/folders_and_priorities/folders_with_priority_unassigned_on_top2.dart';
 import 'package:remember_demos/demos/folders_and_priorities/folders_with_priority_unassigned_on_top3.dart';
 import 'package:remember_demos/demos/home_screen/home_screen_1.dart';
+import 'package:remember_demos/demos/home_screen/home_screen_11.dart';
 import 'package:remember_demos/demos/home_screen/home_screen_2.dart';
 import 'package:remember_demos/demos/home_screen/home_screen_3.dart';
 import 'package:remember_demos/demos/home_screen/home_screen_4.dart';
@@ -129,11 +130,11 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(height: 16),
               button("Home Screen 7", Navigation1(page: HomeScreen7())),
               subtitle(
-                  "The Google-Calendar look alike but more spacing for todo items"),
+                  "The Google-Calendar look alike but more spacing for To-Do items"),
               const SizedBox(height: 16),
               button("Home Screen 8", Navigation1(page: HomeScreen8())),
               subtitle(
-                  "The Google-Calendar look alike but EVEN more spacing for todo items"),
+                  "The Google-Calendar look alike but EVEN more spacing for To-Do items"),
               const SizedBox(height: 16),
               button("Home Screen 9", Navigation1(page: HomeScreen9())),
               subtitle(
@@ -141,6 +142,13 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(height: 16),
               button("Home Screen 10", Navigation1(page: HomeScreen10())),
               subtitle("Dynamic spacing on the to-do list with a max height"),
+              const SizedBox(height: 16),
+              button("Home Screen 11", Navigation1(page: HomeScreen11())),
+              subtitle(
+                "Even more spacing on To-Do list, Increased height of To-Do tiles, "
+                "move the To-Do text to center justified under DateCarousel, "
+                "remove the x/y count, checked To-Do items to the bottom, and ListView switch (too small)",
+              ),
               const SizedBox(height: 16),
 
               //

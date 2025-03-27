@@ -5,7 +5,7 @@ import 'package:remember_demos/text_styles.dart';
 import 'package:remember_demos/theme.dart';
 import 'package:remember_demos/widgets/utils.dart';
 
-TaskRowSmall randomTaskRow(Key k,
+TaskRowSmall randomSmallTaskRow(Key k,
     {String? title, Color? color, int? priority}) {
   return TaskRowSmall.fromBasicTask(randomBasicTask(
     taskTitle: title,
@@ -23,6 +23,7 @@ class TaskRowSmall extends StatelessWidget {
   final bool completed;
   final bool allDayTask;
   final bool forceOffScheduledTime;
+  final double? customSize;
 
   const TaskRowSmall({
     super.key,
@@ -33,10 +34,11 @@ class TaskRowSmall extends StatelessWidget {
     this.completed = false,
     this.allDayTask = false,
     this.forceOffScheduledTime = false,
+    this.customSize,
   });
 
   static TaskRowSmall fromBasicTask(BasicTask task,
-      {bool forceOffScheduledTime = false}) {
+      {bool forceOffScheduledTime = false, double? customSize}) {
     return TaskRowSmall(
       title: task.taskTitle,
       color: task.color,
@@ -45,6 +47,7 @@ class TaskRowSmall extends StatelessWidget {
       completed: task.completed,
       allDayTask: task.isAllDay,
       forceOffScheduledTime: forceOffScheduledTime,
+      customSize: customSize,
     );
   }
 
@@ -69,13 +72,13 @@ class TaskRowSmall extends StatelessWidget {
           color: RememberColors.white,
           border: Border(left: BorderSide(color: color, width: 12)),
         ),
-        margin: EdgeInsets.all(1),
+        margin: EdgeInsets.all(2),
         child: Padding(
           padding: const EdgeInsets.fromLTRB(8, 4, 8, 4),
           child: Row(
             children: [
               SizedBox.square(
-                dimension: 20,
+                dimension: customSize ?? 20,
                 child: Checkbox.adaptive(
                   value: completed,
                   onChanged: (value) {
@@ -84,7 +87,7 @@ class TaskRowSmall extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 8),
-              Text(title, style: regularPrimary.copyWith(fontSize: 14)),
+              Text(title, style: regularPrimary),
               const Spacer(),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
