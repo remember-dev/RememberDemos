@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:remember_demos/demos/home_screen/home_screen_11.dart';
-import 'package:remember_demos/demos/navigation/navigation_1.dart';
 import 'package:remember_demos/home_page.dart';
 import 'package:remember_demos/text_styles.dart';
 import 'package:remember_demos/theme.dart';
@@ -32,7 +30,7 @@ class MainApp extends StatelessWidget {
             return MaterialApp(
               debugShowCheckedModeBanner: false,
               theme: getTheme(primaryFontNotifier.value),
-              home: Navigation1(page: HomeScreen11()),
+              home: HomePage(),
             );
           },
         );
