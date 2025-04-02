@@ -5,6 +5,7 @@ import 'package:remember_demos/demos/folders_and_priorities/folders_with_priorit
 import 'package:remember_demos/demos/folders_and_priorities/folders_with_priority_unassigned_on_top3.dart';
 import 'package:remember_demos/demos/home_screen/home_screen_1.dart';
 import 'package:remember_demos/demos/home_screen/home_screen_11.dart';
+import 'package:remember_demos/demos/home_screen/home_screen_12.dart';
 import 'package:remember_demos/demos/home_screen/home_screen_2.dart';
 import 'package:remember_demos/demos/home_screen/home_screen_3.dart';
 import 'package:remember_demos/demos/home_screen/home_screen_4.dart';
@@ -74,126 +75,181 @@ class _HomePageState extends State<HomePage> {
               //
               title("Folders and Prioritization"),
               const SizedBox(height: 16),
-              button(
-                "Tasks with Priority (no folders) (Reorderable)",
+              thing(
+                "Tasks with Priority",
                 TasksWithPriority(),
+                "No folders. Reorderable",
               ),
               const SizedBox(height: 16),
-              button(
-                "Tasks with Priority (no folders) (Drag&Drop)",
+              thing(
+                "Tasks with Priority",
                 TasksWithPriorityDD(),
+                "No folders. Drag & Drop",
               ),
               const SizedBox(height: 16),
-              button("Folders with Priority", FoldersWithPriority()),
-              subtitle("Just folders and priorities"),
+              thing(
+                "Folders with Priority",
+                FoldersWithPriority(),
+                "Just folders and priorities",
+              ),
               const SizedBox(height: 16),
-              button(
+              thing(
                 "Unscheduled Tasks with Priority",
                 FoldersWithPriorityUnscheduledOnTop(),
+                "Unscheduled at the top",
               ),
-              subtitle("Unscheduled at the top"),
               const SizedBox(height: 16),
-              button(
+              thing(
                 "Unscheduled Tasks with Priority",
                 FoldersWithPriorityUnscheduledOnTop2(),
+                "Renamed the titles and labels",
               ),
-              subtitle("Renamed the titles and labels"),
               const SizedBox(height: 16),
-              button(
+              thing(
                 "Unscheduled Tasks with Priority",
                 FoldersWithPriorityUnscheduledOnTop3(),
+                "Looooooooots of tasks",
               ),
-              subtitle("Looooooooots of tasks"),
               const SizedBox(height: 16),
 
               //
               title("Home Screen"),
               const SizedBox(height: 16),
-              button("Home Screen 1 (current)", HomeScreen1()),
-              subtitle("The current home screen as of March 6, 2025."),
+              thing(
+                "Home Screen 1 (current)",
+                HomeScreen1(),
+                "The current home screen as of March 6, 2025.",
+              ),
               const SizedBox(height: 16),
-              button("Home Screen 2", Navigation1(page: HomeScreen2())),
-              subtitle("Switch in top right instead of user setting."),
+              thing(
+                "Home Screen 2",
+                Navigation1(page: HomeScreen2()),
+                "Switch in top right instead of user setting.",
+              ),
               const SizedBox(height: 16),
-              button("Home Screen 3", Navigation1(page: HomeScreen3())),
-              subtitle(
-                  "No bottom expansion tile. Switch shows what was in the bottom tile (Future and delegated tasks)"),
+              thing(
+                "Home Screen 3",
+                Navigation1(page: HomeScreen3()),
+                "No bottom expansion tile. Switch shows what was in the bottom tile (Future and delegated tasks)",
+              ),
               const SizedBox(height: 16),
-              button("Home Screen 4", Navigation1(page: HomeScreen4())),
-              subtitle("The 'Scheduled Tasks' tile is NOT expandable"),
+              thing(
+                "Home Screen 4",
+                Navigation1(page: HomeScreen4()),
+                "The 'Scheduled Tasks' tile is NOT expandable",
+              ),
               const SizedBox(height: 16),
-              button("Home Screen 5", Navigation1(page: HomeScreen5())),
-              subtitle("The Google-Calendar look alike"),
+              thing(
+                "Home Screen 5",
+                Navigation1(page: HomeScreen5()),
+                "The Google-Calendar look alike",
+              ),
               const SizedBox(height: 16),
-              button("Home Screen 6", Navigation1(page: HomeScreen6())),
-              subtitle("The Google-Calendar look alike but more polished up"),
+              thing(
+                "Home Screen 6",
+                Navigation1(page: HomeScreen6()),
+                "The Google-Calendar look alike but more polished up",
+              ),
               const SizedBox(height: 16),
-              button("Home Screen 7", Navigation1(page: HomeScreen7())),
-              subtitle(
-                  "The Google-Calendar look alike but more spacing for To-Do items"),
+              thing(
+                "Home Screen 7",
+                Navigation1(page: HomeScreen7()),
+                "The Google-Calendar look alike but more spacing for To-Do items",
+              ),
               const SizedBox(height: 16),
-              button("Home Screen 8", Navigation1(page: HomeScreen8())),
-              subtitle(
+              thing("Home Screen 8", Navigation1(page: HomeScreen8()),
                   "The Google-Calendar look alike but EVEN more spacing for To-Do items"),
               const SizedBox(height: 16),
-              button("Home Screen 9", Navigation1(page: HomeScreen9())),
-              subtitle(
+              thing("Home Screen 9", Navigation1(page: HomeScreen9()),
                   "With bottom app bar so that we can get a feel for spacing"),
               const SizedBox(height: 16),
-              button("Home Screen 10", Navigation1(page: HomeScreen10())),
-              subtitle("Dynamic spacing on the to-do list with a max height"),
+              thing("Home Screen 10", Navigation1(page: HomeScreen10()),
+                  "Dynamic spacing on the to-do list with a max height"),
               const SizedBox(height: 16),
-              button("Home Screen 11", Navigation1(page: HomeScreen11())),
-              subtitle(
+              thing(
+                "Home Screen 11",
+                Navigation1(page: HomeScreen11()),
                 "Even more spacing on To-Do list, Increased height of To-Do tiles, "
-                "move the To-Do text to center justified under DateCarousel, "
-                "remove the x/y count, checked To-Do items to the bottom, and ListView switch (too small)",
+                    "move the To-Do text to center justified under DateCarousel, "
+                    "remove the x/y count, checked To-Do items to the bottom, and ListView switch (too small)",
+              ),
+              const SizedBox(height: 16),
+              thing(
+                "Home Screen 12",
+                Navigation1(page: HomeScreen12()),
+                "Capitalize \"Tasks\", Center the date carousel relative to screen, "
+                    "remove hamburger menu, move toggle to the left, remove the date "
+                    "on the schedule screen and To Do list, separator between to do "
+                    "and scheduled tasks, List view needs beginning and end time, "
+                    "time and priority real estate.",
               ),
               const SizedBox(height: 16),
 
               //
               title("Onboarding"),
               const SizedBox(height: 16),
-              button("Onboarding 1 (current)", Onboarding1()),
-              subtitle("The current onboarding process as of March 7th, 2025"),
+              thing(
+                "Onboarding 1 (current)",
+                Onboarding1(),
+                "The current onboarding process as of March 7th, 2025",
+              ),
               const SizedBox(height: 16),
-              button("Onboarding 2", Onboarding2()),
-              subtitle("An idea of onboarding that mimics VisualMind"),
+              thing(
+                "Onboarding 2",
+                Onboarding2(),
+                "An idea of onboarding that mimics VisualMind",
+              ),
               const SizedBox(height: 16),
 
               //
               title("Planning Process"),
               const SizedBox(height: 16),
-              button("Planning Process 1 (current)", PlanningValues1()),
-              subtitle("The current planning process as of March 7th, 2025"),
+              thing(
+                "Planning Process 1 (current)",
+                PlanningValues1(),
+                "The current planning process as of March 7th, 2025",
+              ),
               const SizedBox(height: 16),
 
               //
               title("Task Creation"),
               const SizedBox(height: 16),
-              button(
+              thing(
                 "Quick Task Bar 1 (current)",
                 QuickTaskWrapper(quickTaskBarType: QuickTaskBar1),
+                "The current Quick Task Bar as of March 25th, 2025",
               ),
-              subtitle("The current Quick Task Bar as of March 25th, 2025"),
               const SizedBox(height: 16),
-              button(
+              thing(
                 "Quick Task Bar 2",
                 QuickTaskWrapper(quickTaskBarType: QuickTaskBar2),
+                "The Quick Task Bar 2 from a design by Lynn",
               ),
-              subtitle("The Quick Task Bar 2 from a design by Lynn"),
               const SizedBox(height: 16),
 
               //
               title("Bottom Navigation Bar"),
               const SizedBox(height: 16),
-              button("Navigation bar 1 (current)", Navigation1()),
-              subtitle("The current navigation bar as of March 20th, 2025"),
+              thing(
+                "Navigation bar 1 (current)",
+                Navigation1(),
+                "The current navigation bar as of March 20th, 2025",
+              ),
               const SizedBox(height: 64),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  Widget thing(String buttonText, Widget destination, String subtitleText) {
+    return Column(
+      children: [
+        const SizedBox(height: 16),
+        button(buttonText, destination),
+        subtitle(subtitleText),
+      ],
     );
   }
 

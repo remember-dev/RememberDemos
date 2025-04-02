@@ -10,11 +10,13 @@ const int DEFAULT_SCHEDULE_DURATION_MINUTES = 60;
 class CalendarScheduler extends StatefulWidget {
   final List<BasicTask> tasks;
   final DateTime? dateToShow;
+  final bool showDatesInTaskRows;
 
   const CalendarScheduler({
     super.key,
     required this.tasks,
     this.dateToShow,
+    this.showDatesInTaskRows = true,
   });
 
   @override
@@ -142,7 +144,10 @@ class _CalendarSchedulerState extends State<CalendarScheduler> {
           left: 50,
           child: SizedBox(
             width: totalWidth,
-            child: TaskRow.fromBasicTask(task),
+            child: TaskRow.fromBasicTask(
+              task,
+              forceOffScheduledTime: !widget.showDatesInTaskRows,
+            ),
           ),
         ),
       );

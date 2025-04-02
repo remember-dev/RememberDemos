@@ -18,9 +18,11 @@ class TaskRow extends StatelessWidget {
   final Color color;
   final int priority;
   final DateTime? scheduledTime;
+  final int? duration;
   final bool completed;
   final bool allDayTask;
   final bool forceOffScheduledTime;
+  final bool showStartAndEndTimes;
 
   const TaskRow({
     super.key,
@@ -28,13 +30,15 @@ class TaskRow extends StatelessWidget {
     required this.color,
     required this.priority,
     this.scheduledTime,
+    this.duration,
     this.completed = false,
     this.allDayTask = false,
     this.forceOffScheduledTime = false,
+    this.showStartAndEndTimes = false,
   });
 
   static TaskRow fromBasicTask(BasicTask task,
-      {bool forceOffScheduledTime = false}) {
+      {bool forceOffScheduledTime = false, bool showStartAndEndTimes = false}) {
     return TaskRow(
       title: task.taskTitle,
       color: task.color,
@@ -43,6 +47,7 @@ class TaskRow extends StatelessWidget {
       completed: task.completed,
       allDayTask: task.isAllDay,
       forceOffScheduledTime: forceOffScheduledTime,
+      showStartAndEndTimes: showStartAndEndTimes,
     );
   }
 
@@ -92,6 +97,11 @@ class TaskRow extends StatelessWidget {
               if (scheduledTime != null && allDayTask && !forceOffScheduledTime)
                 Text(
                   DateFormat('E MMM d').format(scheduledTime!),
+                  style: regularPrimary,
+                ),
+              if (showStartAndEndTimes)
+                Text(
+                  "${DateFormat('h:mm a').format(scheduledTime!)} - ${DateFormat('h:mm a').format(scheduledTime!.add(Duration(minutes: duration ?? 60)))}",
                   style: regularPrimary,
                 ),
             ],
