@@ -23,6 +23,7 @@ class TaskRow extends StatelessWidget {
   final bool allDayTask;
   final bool forceOffScheduledTime;
   final bool showStartAndEndTimes;
+  final TextStyle? scheduledTimeStyle;
 
   const TaskRow({
     super.key,
@@ -35,10 +36,15 @@ class TaskRow extends StatelessWidget {
     this.allDayTask = false,
     this.forceOffScheduledTime = false,
     this.showStartAndEndTimes = false,
+    this.scheduledTimeStyle,
   });
 
-  static TaskRow fromBasicTask(BasicTask task,
-      {bool forceOffScheduledTime = false, bool showStartAndEndTimes = false}) {
+  static TaskRow fromBasicTask(
+    BasicTask task, {
+    bool forceOffScheduledTime = false,
+    bool showStartAndEndTimes = false,
+    TextStyle? scheduledTimeStyle,
+  }) {
     return TaskRow(
       title: task.taskTitle,
       color: task.color,
@@ -48,6 +54,7 @@ class TaskRow extends StatelessWidget {
       allDayTask: task.isAllDay,
       forceOffScheduledTime: forceOffScheduledTime,
       showStartAndEndTimes: showStartAndEndTimes,
+      scheduledTimeStyle: scheduledTimeStyle,
     );
   }
 
@@ -92,17 +99,17 @@ class TaskRow extends StatelessWidget {
                   !forceOffScheduledTime)
                 Text(
                   DateFormat('E MMM d h:mm a').format(scheduledTime!),
-                  style: regularPrimary,
+                  style: scheduledTimeStyle ?? regularPrimary,
                 ),
               if (scheduledTime != null && allDayTask && !forceOffScheduledTime)
                 Text(
                   DateFormat('E MMM d').format(scheduledTime!),
-                  style: regularPrimary,
+                  style: scheduledTimeStyle ?? regularPrimary,
                 ),
               if (showStartAndEndTimes)
                 Text(
                   "${DateFormat('h:mm a').format(scheduledTime!)} - ${DateFormat('h:mm a').format(scheduledTime!.add(Duration(minutes: duration ?? 60)))}",
-                  style: regularPrimary,
+                  style: scheduledTimeStyle ?? regularPrimary,
                 ),
             ],
           ),

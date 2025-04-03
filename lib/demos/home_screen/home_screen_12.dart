@@ -112,8 +112,12 @@ class _HomeScreen12State extends State<HomeScreen12> {
             "Scheduled Tasks",
             style: boldSecondary.copyWith(fontSize: 16),
           ),
-          ...scheduledTasks.map((t) => TaskRow.fromBasicTask(t,
-              forceOffScheduledTime: true, showStartAndEndTimes: true)),
+          ...scheduledTasks.map((t) => TaskRow.fromBasicTask(
+                t,
+                forceOffScheduledTime: true,
+                showStartAndEndTimes: true,
+                scheduledTimeStyle: mediumPrimary.copyWith(fontSize: 12),
+              )),
         ]),
       ),
     );

@@ -181,7 +181,7 @@ class _HomePageState extends State<HomePage> {
                     "remove hamburger menu, move toggle to the left, remove the date "
                     "on the schedule screen and To Do list, separator between to do "
                     "and scheduled tasks, List view needs beginning and end time, "
-                    "time and priority real estate.",
+                    "and time and priority real estate.",
               ),
               const SizedBox(height: 16),
 
