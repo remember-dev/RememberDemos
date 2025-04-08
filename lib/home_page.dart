@@ -21,6 +21,7 @@ import 'package:remember_demos/demos/onboarding/onboarding_2.dart';
 import 'package:remember_demos/demos/planning/planning_values_1.dart';
 import 'package:remember_demos/demos/folders_and_priorities/tasks_with_priority.dart';
 import 'package:remember_demos/demos/folders_and_priorities/tasks_with_priority_reorderable.dart';
+import 'package:remember_demos/demos/planning/planning_values_2.dart';
 import 'package:remember_demos/demos/task_creation/quick_task_bar_1.dart';
 import 'package:remember_demos/demos/task_creation/quick_task_bar_2.dart';
 import 'package:remember_demos/demos/task_creation/quick_task_wrapper.dart';
@@ -208,6 +209,13 @@ class _HomePageState extends State<HomePage> {
                 "Planning Process 1 (current)",
                 PlanningValues1(),
                 "The current planning process as of March 7th, 2025",
+              ),
+              thing(
+                "Planning Process 2",
+                PlanningValues2(),
+                "Planning process with no selection limits on values/goals/tasks. "
+                    "(Max screens ≈200) (min screens 3). 'Depth-First-Traversal' going "
+                    "from Value->Goal->Task->(to next goal/value)",
               ),
               const SizedBox(height: 16),
 
