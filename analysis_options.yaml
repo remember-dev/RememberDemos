@@ -1,5 +1,6 @@
 include: package:flutter_lints/flutter.yaml
 analyzer:
   errors:
+    camel_case_types: ignore
     constant_identifier_names: ignore
     non_constant_identifier_names: ignore

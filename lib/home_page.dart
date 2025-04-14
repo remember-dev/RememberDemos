@@ -16,8 +16,9 @@ import 'package:remember_demos/demos/home_screen/home_screen_8.dart';
 import 'package:remember_demos/demos/home_screen/home_screen_9.dart';
 import 'package:remember_demos/demos/home_screen/home_screen_10.dart';
 import 'package:remember_demos/demos/navigation/navigation_1.dart';
-import 'package:remember_demos/demos/onboarding/onboarding_1.dart';
-import 'package:remember_demos/demos/onboarding/onboarding_2.dart';
+import 'package:remember_demos/demos/onboarding/onboarding_1/onboarding_1.dart';
+import 'package:remember_demos/demos/onboarding/onboarding_2/onboarding_2.dart';
+import 'package:remember_demos/demos/onboarding/onboarding_3/onboarding_3_1.dart';
 import 'package:remember_demos/demos/planning/planning_values_1.dart';
 import 'package:remember_demos/demos/folders_and_priorities/tasks_with_priority.dart';
 import 'package:remember_demos/demos/folders_and_priorities/tasks_with_priority_reorderable.dart';
@@ -199,6 +200,12 @@ class _HomePageState extends State<HomePage> {
                 "Onboarding 2",
                 Onboarding2(),
                 "An idea of onboarding that mimics VisualMind",
+              ),
+              const SizedBox(height: 16),
+              thing(
+                "Onboarding 3",
+                Onboarding_3_1(),
+                "The idea that Heidi has in FreeForm.",
               ),
               const SizedBox(height: 16),
 
