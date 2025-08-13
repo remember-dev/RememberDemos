@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:remember_demos/demos/celebration/celebration_tester.dart';
 import 'package:remember_demos/home_page.dart';
 import 'package:remember_demos/text_styles.dart';
 import 'package:remember_demos/theme.dart';
@@ -31,8 +30,7 @@ class MainApp extends StatelessWidget {
             return MaterialApp(
               debugShowCheckedModeBanner: false,
               theme: getTheme(primaryFontNotifier.value),
-              // home: HomePage(),
-              home: CelebrationTester(),
+              home: HomePage(),
               navigatorKey: navigatorKey,
             );
           },
