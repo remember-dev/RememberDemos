@@ -24,6 +24,8 @@ class TaskRow extends StatelessWidget {
   final bool forceOffScheduledTime;
   final bool showStartAndEndTimes;
   final TextStyle? scheduledTimeStyle;
+  final VoidCallback? onChecked;
+  final GlobalKey? globalKeyForCelebrations;
 
   const TaskRow({
     super.key,
@@ -37,6 +39,8 @@ class TaskRow extends StatelessWidget {
     this.forceOffScheduledTime = false,
     this.showStartAndEndTimes = false,
     this.scheduledTimeStyle,
+    this.onChecked,
+    this.globalKeyForCelebrations,
   });
 
   static TaskRow fromBasicTask(
@@ -83,11 +87,15 @@ class TaskRow extends StatelessWidget {
           // visualDensity: VisualDensity(vertical: allDayTask ? -4 : 0),
           tileColor: Colors.white,
           contentPadding: EdgeInsets.only(right: 12),
-          leading: Checkbox.adaptive(
-              value: completed,
-              onChanged: (value) {
-                // completed = value ?? false; // TODO
-              }),
+          leading: Transform.scale(
+            key: globalKeyForCelebrations,
+            scale: 1.2,
+            child: Checkbox.adaptive(
+                value: completed,
+                onChanged: (value) {
+                  onChecked?.call();
+                }),
+          ),
           title: Text(title, style: regularPrimary),
           trailing: Column(
             crossAxisAlignment: CrossAxisAlignment.end,

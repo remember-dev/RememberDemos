@@ -30,7 +30,7 @@ import 'package:remember_demos/demos/task_creation/quick_task_wrapper.dart';
 import 'package:remember_demos/settings_page.dart';
 import 'package:remember_demos/text_styles.dart';
 
-GlobalKey navigatorKey = GlobalKey<State<StatefulWidget>>();
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -43,7 +43,6 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: navigatorKey,
       body: Center(
         child: SingleChildScrollView(
           physics: AlwaysScrollableScrollPhysics(),
