@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:remember_demos/demos/celebration/celebration_tester.dart';
 import 'package:remember_demos/demos/folders_and_priorities/folders_with_priority.dart';
 import 'package:remember_demos/demos/folders_and_priorities/folders_with_priority_unassigned_on_top.dart';
 import 'package:remember_demos/demos/folders_and_priorities/folders_with_priority_unassigned_on_top2.dart';
@@ -249,6 +250,14 @@ class _HomePageState extends State<HomePage> {
                 "Navigation bar 1 (current)",
                 Navigation1(),
                 "The current navigation bar as of March 20th, 2025",
+              ),
+              const SizedBox(height: 64),
+              title("Celebrations"),
+              const SizedBox(height: 16),
+              thing(
+                "Celebration Tester",
+                CelebrationTester(),
+                "Test different celebrations and see how they look!",
               ),
               const SizedBox(height: 64),
             ],
