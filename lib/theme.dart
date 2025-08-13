@@ -33,7 +33,7 @@ ThemeData getTheme(String font) {
     appBarTheme: const AppBarTheme(
       backgroundColor: RememberColors.light,
     ),
-    cardTheme: const CardTheme(
+    cardTheme: const CardThemeData(
       color: RememberColors.light,
     ),
     bottomAppBarTheme: const BottomAppBarTheme(
