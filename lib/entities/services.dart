@@ -5,6 +5,20 @@ import 'package:remember_demos/entities/Category.dart';
 import 'package:remember_demos/entities/Goal.dart';
 import 'package:remember_demos/entities/personal_value.dart';
 
+/// Hit 'em with this, eh?
+class ValueOrGoal {
+  dynamic valueOrGoal;
+
+  bool get _isValue => valueOrGoal is PersonalValue;
+  bool get _isGoal => valueOrGoal is Goal;
+
+  ValueOrGoal(this.valueOrGoal)
+      : assert(valueOrGoal is PersonalValue || valueOrGoal is Goal);
+
+  Color get color => valueOrGoal.color;
+  String get title => valueOrGoal.title;
+}
+
 Iterable<PersonalValue> getPersonalValuesByCategory(Category category) {
   return personalValues.where((p) => p.categoryId == category.id);
 }

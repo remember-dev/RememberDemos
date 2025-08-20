@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:remember_demos/demos/planning_process_3/planning_values_3.dart';
 import 'package:remember_demos/home_page.dart';
 import 'package:remember_demos/text_styles.dart';
 import 'package:remember_demos/theme.dart';
@@ -30,7 +31,8 @@ class MainApp extends StatelessWidget {
             return MaterialApp(
               debugShowCheckedModeBanner: false,
               theme: getTheme(primaryFontNotifier.value),
-              home: HomePage(),
+              // home: HomePage(),
+              home: PlanningValues3(),
               navigatorKey: navigatorKey,
             );
           },

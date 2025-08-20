@@ -24,6 +24,7 @@ void fontListener() {
     fontFamily: primaryFontNotifier.value,
     fontWeight: FontWeight.w700,
   );
+
   lightSecondary = TextStyle(
     fontFamily: secondaryFontNotifier.value,
     fontWeight: FontWeight.w300,
@@ -66,6 +67,7 @@ TextStyle boldPrimary = TextStyle(
   fontFamily: primaryFontNotifier.value,
   fontWeight: FontWeight.w700,
 );
+
 TextStyle lightSecondary = TextStyle(
   fontFamily: secondaryFontNotifier.value,
   fontWeight: FontWeight.w300,
