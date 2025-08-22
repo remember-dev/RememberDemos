@@ -8,7 +8,7 @@ import 'package:remember_demos/entities/goal.dart';
 import 'package:remember_demos/entities/personal_value.dart';
 import 'package:remember_demos/entities/services.dart';
 import 'package:remember_demos/text_styles.dart';
-import 'package:remember_demos/widgets/Button.dart';
+import 'package:remember_demos/widgets/button.dart';
 
 Widget planningTitleThing() {
   return Center(
@@ -64,29 +64,32 @@ Widget scrollingCategories() {
   );
 }
 
-Widget valueGoalButtons() {
-  var value = personalValues.first;
+Widget valueButtons(Category category) {
   return Column(
-    children: [
-      valueGoalButton(ValueOrGoal(personalValues[0])),
-      valueGoalButton(ValueOrGoal(personalValues[1])),
-      valueGoalButton(ValueOrGoal(personalValues[2])),
-      valueGoalButton(ValueOrGoal(personalValues[3])),
-      valueGoalButton(ValueOrGoal(personalValues[4])),
-    ],
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: getPersonalValuesByCategory(category)
+        .map((p) => valueGoalButton(ValueOrGoal(p)))
+        .toList(),
+  );
+}
+
+Widget goalButtons(PersonalValue value) {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: getGoalsByPersonalValue(value)
+        .map((g) => valueGoalButton(ValueOrGoal(g)))
+        .toList(),
   );
 }
 
 Widget valueGoalButton(ValueOrGoal valueOrGoal) {
   return Padding(
-    padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 21),
-    child: SelectableButton(
-      selected: true,
+    padding: const EdgeInsets.symmetric(vertical: 4),
+    child: ValueGoalProcess3Button(
       label: Text(
-        valueOrGoal.title,
-        style: regularPrimary.copyWith(fontSize: 16),
+        valueOrGoal.title.toUpperCase(),
       ),
-      selectedColor: Colors.amber,
+      selectedColor: Colors.white,
     ),
   );
 }

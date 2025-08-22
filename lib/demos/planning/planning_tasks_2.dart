@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_guid/flutter_guid.dart';
 import 'package:remember_demos/demos/planning/planning_goals_2.dart';
 import 'package:remember_demos/demos/task_details/task_details_1.dart';
-import 'package:remember_demos/entities/Goal.dart';
+import 'package:remember_demos/entities/goal.dart';
 import 'package:remember_demos/entities/basic_task.dart';
 import 'package:remember_demos/entities/personal_value.dart';
 import 'package:remember_demos/home_page.dart';

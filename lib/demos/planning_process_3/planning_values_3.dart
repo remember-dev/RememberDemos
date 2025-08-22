@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:remember_demos/demos/planning_process_3/planning_3_common.dart';
+import 'package:remember_demos/entities/services.dart';
 
 class PlanningValues3 extends StatefulWidget {
   const PlanningValues3({super.key});
@@ -17,7 +18,7 @@ class _PlanningValues3State extends State<PlanningValues3> {
           planningTitleThing(),
           whiteAreaWithText(),
           scrollingCategories(),
-          valueGoalButtons(),
+          valueButtons(categories.first),
           valueChip(),
           goalChip(),
           bottomButtons(),

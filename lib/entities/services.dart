@@ -1,8 +1,8 @@
 import 'dart:ui';
 
 import 'package:flutter_guid/flutter_guid.dart';
-import 'package:remember_demos/entities/Category.dart';
-import 'package:remember_demos/entities/Goal.dart';
+import 'package:remember_demos/entities/goal.dart';
+import 'package:remember_demos/entities/category.dart';
 import 'package:remember_demos/entities/personal_value.dart';
 
 /// Hit 'em with this, eh?

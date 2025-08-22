@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_guid/flutter_guid.dart';
 import 'package:remember_demos/demos/planning/planning_tasks_2.dart';
-import 'package:remember_demos/entities/Goal.dart';
+import 'package:remember_demos/entities/goal.dart';
 import 'package:remember_demos/entities/personal_value.dart';
 import 'package:remember_demos/entities/services.dart';
 import 'package:remember_demos/text_styles.dart';
-import 'package:remember_demos/widgets/Button.dart';
+import 'package:remember_demos/widgets/button.dart';
 import 'package:remember_demos/widgets/dry_intrinsic_width.dart';
 import 'package:remember_demos/widgets/remember_bottom_app_bar.dart';
 import 'package:remember_demos/widgets/remember_planning_top_bar.dart';

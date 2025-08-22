@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:remember_demos/entities/services.dart';
 import 'package:remember_demos/home_page.dart';
 import 'package:remember_demos/text_styles.dart';
-import 'package:remember_demos/widgets/Button.dart';
+import 'package:remember_demos/widgets/button.dart';
 import 'package:remember_demos/widgets/generic_bottom_app_bar.dart';
 
 class VisualMind4 extends StatefulWidget {

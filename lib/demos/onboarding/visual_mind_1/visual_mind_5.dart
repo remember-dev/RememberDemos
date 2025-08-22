@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'visual_mind_4.dart';
 import 'package:remember_demos/text_styles.dart';
-import 'package:remember_demos/widgets/Button.dart';
+import 'package:remember_demos/widgets/button.dart';
 import 'package:remember_demos/widgets/utils.dart';
 
 class VisualMind5 extends StatefulWidget {
