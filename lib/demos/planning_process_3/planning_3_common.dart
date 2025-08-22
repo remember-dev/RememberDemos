@@ -8,6 +8,7 @@ import 'package:remember_demos/entities/goal.dart';
 import 'package:remember_demos/entities/personal_value.dart';
 import 'package:remember_demos/entities/services.dart';
 import 'package:remember_demos/text_styles.dart';
+import 'package:remember_demos/theme.dart';
 import 'package:remember_demos/widgets/button.dart';
 
 Widget planningTitleThing() {
@@ -19,13 +20,13 @@ Widget planningTitleThing() {
   );
 }
 
-Widget whiteAreaWithText() {
+Widget whiteAreaWithText(String text) {
   return Card(
     color: Colors.white,
     child: Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 4),
       child: Text(
-        "Think about what matters to you - then tap a category and choose one value to begin",
+        text,
         style: regularPrimary.copyWith(fontSize: 16),
         textAlign: TextAlign.center,
       ),
@@ -33,75 +34,161 @@ Widget whiteAreaWithText() {
   );
 }
 
-Widget categoryButton(category) {
+Widget categoryButton(category, Function(Category) onTap) {
   return Card(
     color: category.color,
-    child: Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 9),
-      child: Text(
-        category.title.toUpperCase(),
-        style: boldPrimary.copyWith(fontSize: 16),
+    child: InkWell(
+      onTap: () => onTap(category),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 9),
+        child: Text(
+          category.title.toUpperCase(),
+          style: boldPrimary.copyWith(fontSize: 16),
+        ),
       ),
     ),
   );
 }
 
-Widget scrollingCategories() {
+Widget scrollingCategories(Function(Category) onTap) {
   return SingleChildScrollView(
     scrollDirection: Axis.horizontal,
     child: Row(
       children: [
-        categoryButton(categories[0]),
-        categoryButton(categories[1]),
-        categoryButton(categories[2]),
-        categoryButton(categories[3]),
-        categoryButton(categories[4]),
-        categoryButton(categories[5]),
-        categoryButton(categories[6]),
-        categoryButton(categories[7]),
+        categoryButton(categories[0], onTap),
+        categoryButton(categories[1], onTap),
+        categoryButton(categories[2], onTap),
+        categoryButton(categories[3], onTap),
+        categoryButton(categories[4], onTap),
+        categoryButton(categories[5], onTap),
+        categoryButton(categories[6], onTap),
+        categoryButton(categories[7], onTap),
       ],
     ),
   );
 }
 
-Widget valueButtons(Category category) {
+Widget valueButtons(Category category, Function(PersonalValue) onTap,
+    [Key? key]) {
   return Column(
+    key: key,
     crossAxisAlignment: CrossAxisAlignment.start,
-    children: getPersonalValuesByCategory(category)
-        .map((p) => valueGoalButton(ValueOrGoal(p)))
-        .toList(),
+    children: [
+      Row(),
+      ...getPersonalValuesByCategory(category)
+          .map((p) => valueButton(p, onTap)),
+    ],
   );
 }
 
-Widget goalButtons(PersonalValue value) {
+Widget goalButtons(PersonalValue value, Function(Goal) onTap, [Key? key]) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: getGoalsByPersonalValue(value)
-        .map((g) => valueGoalButton(ValueOrGoal(g)))
+        .map((g) => goalButton(g, onTap))
         .toList(),
   );
 }
 
-Widget valueGoalButton(ValueOrGoal valueOrGoal) {
+Widget valueButton(PersonalValue value, Function(PersonalValue) onTap) {
   return Padding(
     padding: const EdgeInsets.symmetric(vertical: 4),
     child: ValueGoalProcess3Button(
       label: Text(
-        valueOrGoal.title.toUpperCase(),
+        value.title.toUpperCase(),
       ),
       selectedColor: Colors.white,
+      onPressed: () => onTap(value),
     ),
   );
 }
 
-Widget valueChip() {
-  return Placeholder();
+Widget goalButton(Goal goal, Function(Goal) onTap) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(vertical: 4),
+    child: ValueGoalProcess3Button(
+      label: Text(
+        goal.title,
+      ),
+      selectedColor: Colors.white,
+      onPressed: () => onTap(goal),
+    ),
+  );
 }
 
-Widget goalChip() {
-  return Placeholder();
+Widget valueChip(PersonalValue value, Category category) {
+  return Chip(
+    color: WidgetStatePropertyAll(value.color),
+    side: BorderSide(color: Colors.transparent),
+    padding: EdgeInsets.all(0),
+    label: Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Text(
+          "Value | ",
+          style: TextStyle(fontSize: 12, color: Colors.white),
+        ),
+        Text(
+          "${value.title} (${category.title})",
+          style: TextStyle(
+            fontSize: 12,
+            // fontWeight: FontWeight.bold,
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+Widget goalChip(Goal goal) {
+  return Chip(
+    color: WidgetStatePropertyAll(goal.color),
+    side: BorderSide(color: Colors.transparent),
+    padding: EdgeInsets.all(0),
+    label: Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Text(
+          "Goal | ",
+          style: TextStyle(fontSize: 12, color: Colors.white),
+        ),
+        Text(
+          goal.title,
+          style: TextStyle(
+            fontSize: 12,
+            // fontWeight: FontWeight.bold,
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+Widget planningDivider() {
+  return Divider(
+    thickness: 0.5,
+    color: Colors.grey,
+  );
 }
 
 Widget bottomButtons() {
-  return Placeholder();
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Row(),
+      TextButton.icon(
+        icon: Icon(Icons.add),
+        onPressed: () {},
+        label: Text("ADD YOUR OWN"),
+        style: RememberButtonStyles.primary,
+      ),
+      const SizedBox(height: 8),
+      TextButton.icon(
+        // icon: Icon(Icons.add),
+        onPressed: () {},
+        label: Text("✨ GET AI SUGGESTIONS"),
+        style: RememberButtonStyles.primary,
+      ),
+    ],
+  );
 }

@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:remember_demos/demos/planning_process_3/planning_3_common.dart';
+import 'package:remember_demos/demos/planning_process_3/planning_goals_3.dart';
+import 'package:remember_demos/entities/category.dart';
+import 'package:remember_demos/entities/personal_value.dart';
 import 'package:remember_demos/entities/services.dart';
+import 'package:remember_demos/text_styles.dart';
 import 'package:remember_demos/widgets/generic_bottom_app_bar.dart';
 
 class PlanningValues3 extends StatefulWidget {
@@ -11,22 +15,74 @@ class PlanningValues3 extends StatefulWidget {
 }
 
 class _PlanningValues3State extends State<PlanningValues3> {
+  Category selectedCategory = categories.first;
+  List<PersonalValue> selectedValues = [];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          planningTitleThing(),
-          whiteAreaWithText(),
-          scrollingCategories(),
-          valueButtons(categories.first),
-          bottomButtons(),
-        ],
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text(
+          "Planning",
+          style: regularPrimary.copyWith(fontSize: 20),
+        ),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            whiteAreaWithText(
+              "Think about what matters to you - then tap a category and choose one value to begin",
+            ),
+            scrollingCategories((category) {
+              setState(() {
+                selectedCategory = category;
+              });
+            }),
+            AnimatedSwitcher(
+              duration: Durations.medium2,
+              transitionBuilder: (child, animation) => FadeTransition(
+                opacity: animation,
+                child: ScaleTransition(scale: animation, child: child),
+              ),
+              child: valueButtons(
+                selectedCategory,
+                (value) {
+                  setState(() {
+                    // Only select 1
+                    selectedValues = [value];
+                    return;
+                  });
+                },
+                ValueKey(selectedCategory),
+              ),
+            ),
+            const Spacer(),
+            planningDivider(),
+            const SizedBox(height: 8),
+            bottomButtons(),
+            const SizedBox(height: 16),
+          ],
+        ),
       ),
       bottomNavigationBar: GenericBottomAppBar(
         children: [
           ElevatedButton(
-            onPressed: () {},
+            onPressed: selectedValues.isEmpty
+                ? null
+                : () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => PlanningGoals3(
+                          category: selectedCategory,
+                          pValue: selectedValues.first,
+                        ),
+                      ),
+                    );
+                  },
             child: Text("Next"),
           ),
         ],
