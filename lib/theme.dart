@@ -66,51 +66,28 @@ ThemeData getTheme(String font) {
       }),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
-      style: ButtonStyle(
-        backgroundColor: WidgetStateProperty.all<Color>(Colors.white),
-        surfaceTintColor: WidgetStateProperty.all<Color>(Colors.white),
-        elevation: WidgetStateProperty.all<double>(10.0),
-        shape: WidgetStateProperty.all<RoundedRectangleBorder>(
-          RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(300.0),
-            side: const BorderSide(color: Colors.black, width: 3.0),
-          ),
-        ),
-        textStyle: WidgetStateProperty.all<TextStyle>(
-            TextStyle(fontWeight: FontWeight.bold)),
-      ),
+      style: RememberButtonStyles.primary,
     ),
   );
 }
 
-final ButtonStyle primaryStyle = ButtonStyle(
-  backgroundColor: WidgetStateProperty.all<Color>(Colors.white),
-  surfaceTintColor: WidgetStateProperty.all<Color>(Colors.white),
-  elevation: WidgetStateProperty.all<double>(10.0),
-  shadowColor: WidgetStateProperty.all<Color>(Colors.black),
-  shape: WidgetStateProperty.all<RoundedRectangleBorder>(
-    RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(300.0),
-      side: const BorderSide(color: Colors.black, width: 3.0),
-    ),
-  ),
-  textStyle: WidgetStateProperty.all<TextStyle>(
-      TextStyle(fontWeight: FontWeight.bold)),
-  padding: WidgetStateProperty.all<EdgeInsets>(
-    const EdgeInsets.only(left: 18, right: 18, top: 14, bottom: 14),
-  ),
-);
+class RememberButtonStyles {
+  static final ButtonStyle _common = ButtonStyle(
+    backgroundColor: WidgetStateProperty.all(Colors.white),
+    shape: WidgetStateProperty.resolveWith((state) {
+      bool isDisabled = state.contains(WidgetState.disabled);
+      return RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(999),
+        side: BorderSide(color: Colors.black, width: isDisabled ? 0.5 : 1),
+      );
+    }),
+  );
 
-final ButtonStyle secondaryStyle = ButtonStyle(
-  backgroundColor: WidgetStateProperty.all<Color>(Colors.white),
-  surfaceTintColor: WidgetStateProperty.all<Color>(Colors.white),
-  elevation: WidgetStateProperty.all<double>(10.0),
-  shadowColor: WidgetStateProperty.all<Color>(Colors.black),
-  shape: WidgetStateProperty.all<RoundedRectangleBorder>(
-      RoundedRectangleBorder(borderRadius: BorderRadius.circular(300.0))),
-  textStyle: WidgetStateProperty.all<TextStyle>(
-      TextStyle(fontWeight: FontWeight.w500)),
-  padding: WidgetStateProperty.all<EdgeInsets>(
-    const EdgeInsets.only(left: 18, right: 18, top: 14, bottom: 14),
-  ),
-);
+  static final ButtonStyle primary = _common;
+
+  static final ButtonStyle secondary = _common.copyWith(
+    shape: WidgetStatePropertyAll(RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(999),
+    )),
+  );
+}

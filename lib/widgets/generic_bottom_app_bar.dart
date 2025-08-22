@@ -30,9 +30,9 @@ class _GenericBottomAppBarState extends State<GenericBottomAppBar> {
           ),
         ),
         Image.asset(
-          'assets/color-bar.png',
+          "assets/color-bar.png",
           width: MediaQuery.of(context).size.width,
-          height: 8,
+          height: 5,
           fit: BoxFit.fill,
         ),
       ],

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:remember_demos/demos/planning_process_3/planning_3_common.dart';
 import 'package:remember_demos/entities/services.dart';
+import 'package:remember_demos/widgets/generic_bottom_app_bar.dart';
 
 class PlanningValues3 extends StatefulWidget {
   const PlanningValues3({super.key});
@@ -19,9 +20,15 @@ class _PlanningValues3State extends State<PlanningValues3> {
           whiteAreaWithText(),
           scrollingCategories(),
           valueButtons(categories.first),
-          valueChip(),
-          goalChip(),
           bottomButtons(),
+        ],
+      ),
+      bottomNavigationBar: GenericBottomAppBar(
+        children: [
+          ElevatedButton(
+            onPressed: () {},
+            child: Text("Next"),
+          ),
         ],
       ),
     );

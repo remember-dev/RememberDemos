@@ -87,7 +87,7 @@ class _IntroScreenOneState extends State<IntroScreenOne> {
       bottomNavigationBar: GenericBottomAppBar(
         children: [
           ElevatedButton(
-            style: primaryStyle,
+            style: RememberButtonStyles.primary,
             onPressed: () {
               Navigator.push(
                 context,

@@ -41,13 +41,17 @@ class _RememberBottomAppBarState extends State<RememberBottomAppBar> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ElevatedButton(
-                    style: widget.leftEnabled ? primaryStyle : secondaryStyle,
+                    style: widget.leftEnabled
+                        ? RememberButtonStyles.primary
+                        : RememberButtonStyles.secondary,
                     onPressed: widget.onPressedLeft,
                     child: Text(widget.leftText),
                   ),
                   const SizedBox(width: 32),
                   ElevatedButton(
-                    style: widget.rightEnabled ? primaryStyle : secondaryStyle,
+                    style: widget.rightEnabled
+                        ? RememberButtonStyles.primary
+                        : RememberButtonStyles.secondary,
                     onPressed: widget.onPressedRight,
                     child: Text(widget.rightText),
                   ),

@@ -122,7 +122,7 @@ class _CreateAccountState extends State<CreateAccount> {
                   );
                 }
               },
-              style: primaryStyle,
+              style: RememberButtonStyles.primary,
               child: Text("CREATE YOUR PLAN!"),
             ),
           ),

@@ -41,7 +41,7 @@ class _VisualMind1State extends State<VisualMind1> {
                   MaterialPageRoute(builder: (_) => const VisualMind2()),
                 );
               },
-              style: primaryStyle,
+              style: RememberButtonStyles.primary,
               child: Text('Create your plan'),
             ),
           ),

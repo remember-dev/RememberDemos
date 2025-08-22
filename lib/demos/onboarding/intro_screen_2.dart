@@ -133,7 +133,7 @@ class _IntroScreenTwoState extends State<IntroScreenTwo> {
       bottomNavigationBar: GenericBottomAppBar(
         children: [
           ElevatedButton(
-            style: primaryStyle,
+            style: RememberButtonStyles.primary,
             onPressed: () async {
               Navigator.push(
                 context,

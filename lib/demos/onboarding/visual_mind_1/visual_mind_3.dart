@@ -45,7 +45,9 @@ class _VisualMind3State extends State<VisualMind3> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 ElevatedButton(
-                  style: missingFirstName ? secondaryStyle : primaryStyle,
+                  style: missingFirstName
+                      ? RememberButtonStyles.secondary
+                      : RememberButtonStyles.primary,
                   onPressed: missingFirstName
                       ? null
                       : () {
