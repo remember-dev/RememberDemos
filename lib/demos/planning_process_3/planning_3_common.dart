@@ -68,7 +68,8 @@ Widget scrollingCategories(Function(Category) onTap) {
   );
 }
 
-Widget valueButtons(Category category, Function(PersonalValue) onTap,
+Widget valueButtons(Category category, PersonalValue? selectedValue,
+    Function(PersonalValue) onTap,
     [Key? key]) {
   return Column(
     key: key,
@@ -76,21 +77,24 @@ Widget valueButtons(Category category, Function(PersonalValue) onTap,
     children: [
       Row(),
       ...getPersonalValuesByCategory(category)
-          .map((p) => valueButton(p, onTap)),
+          .map((p) => valueButton(p, onTap, p.id == selectedValue?.id)),
     ],
   );
 }
 
-Widget goalButtons(PersonalValue value, Function(Goal) onTap, [Key? key]) {
+Widget goalButtons(
+    PersonalValue value, Goal? selectedGoal, Function(Goal) onTap,
+    [Key? key]) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: getGoalsByPersonalValue(value)
-        .map((g) => goalButton(g, onTap))
+        .map((g) => goalButton(g, onTap, g.id == selectedGoal?.id))
         .toList(),
   );
 }
 
-Widget valueButton(PersonalValue value, Function(PersonalValue) onTap) {
+Widget valueButton(
+    PersonalValue value, Function(PersonalValue) onTap, bool selected) {
   return Padding(
     padding: const EdgeInsets.symmetric(vertical: 4),
     child: ValueGoalProcess3Button(
@@ -99,20 +103,21 @@ Widget valueButton(PersonalValue value, Function(PersonalValue) onTap) {
       ),
       selectedColor: Colors.white,
       onPressed: () => onTap(value),
+      selected: selected,
     ),
   );
 }
 
-Widget goalButton(Goal goal, Function(Goal) onTap) {
+Widget goalButton(Goal goal, Function(Goal) onTap, bool selected) {
   return Padding(
     padding: const EdgeInsets.symmetric(vertical: 4),
     child: ValueGoalProcess3Button(
-      label: Text(
-        goal.title,
-      ),
-      selectedColor: Colors.white,
-      onPressed: () => onTap(goal),
-    ),
+        label: Text(
+          goal.title,
+        ),
+        selectedColor: Colors.white,
+        onPressed: () => onTap(goal),
+        selected: selected),
   );
 }
 

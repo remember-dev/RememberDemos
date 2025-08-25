@@ -56,6 +56,7 @@ class ValueGoalProcess3Button extends StatefulWidget {
   final Color? unselectedColor;
   final Widget? icon;
   final bool withBorder;
+  final bool selected;
 
   const ValueGoalProcess3Button({
     super.key,
@@ -65,6 +66,7 @@ class ValueGoalProcess3Button extends StatefulWidget {
     this.unselectedColor = Colors.transparent,
     this.icon,
     this.withBorder = false,
+    required this.selected,
   });
 
   @override
@@ -73,19 +75,12 @@ class ValueGoalProcess3Button extends StatefulWidget {
 }
 
 class _ValueGoalProcess3ButtonState extends State<ValueGoalProcess3Button> {
-  bool selected = false;
-
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(2),
       child: TextButton.icon(
-        onPressed: () {
-          setState(() {
-            selected = !selected;
-          });
-          widget.onPressed?.call();
-        },
+        onPressed: widget.onPressed,
         label: widget.label,
         icon: widget.icon,
         style: ButtonStyle(
@@ -95,7 +90,7 @@ class _ValueGoalProcess3ButtonState extends State<ValueGoalProcess3Button> {
           textStyle:
               WidgetStatePropertyAll(regularPrimary.copyWith(fontSize: 16)),
           backgroundColor: WidgetStatePropertyAll(
-            selected ? widget.selectedColor : widget.unselectedColor,
+            widget.selected ? widget.selectedColor : widget.unselectedColor,
           ),
           padding: const WidgetStatePropertyAll(
             EdgeInsets.symmetric(horizontal: 21, vertical: 10),

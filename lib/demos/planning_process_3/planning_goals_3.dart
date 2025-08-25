@@ -47,6 +47,7 @@ class _PlanningGoals3State extends State<PlanningGoals3> {
             const SizedBox(height: 8),
             goalButtons(
               widget.pValue,
+              selectedGoal,
               (goal) {
                 setState(() {
                   selectedGoal = goal;

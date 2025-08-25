@@ -16,7 +16,7 @@ class PlanningValues3 extends StatefulWidget {
 
 class _PlanningValues3State extends State<PlanningValues3> {
   Category selectedCategory = categories.first;
-  List<PersonalValue> selectedValues = [];
+  PersonalValue? selectedValue;
 
   @override
   Widget build(BuildContext context) {
@@ -49,11 +49,14 @@ class _PlanningValues3State extends State<PlanningValues3> {
               ),
               child: valueButtons(
                 selectedCategory,
+                selectedValue,
                 (value) {
                   setState(() {
-                    // Only select 1
-                    selectedValues = [value];
-                    return;
+                    if (selectedValue == value) {
+                      selectedValue = null;
+                    } else {
+                      selectedValue = value;
+                    }
                   });
                 },
                 ValueKey(selectedCategory),
@@ -70,7 +73,7 @@ class _PlanningValues3State extends State<PlanningValues3> {
       bottomNavigationBar: GenericBottomAppBar(
         children: [
           ElevatedButton(
-            onPressed: selectedValues.isEmpty
+            onPressed: selectedValue == null
                 ? null
                 : () {
                     Navigator.push(
@@ -78,7 +81,7 @@ class _PlanningValues3State extends State<PlanningValues3> {
                       MaterialPageRoute(
                         builder: (_) => PlanningGoals3(
                           category: selectedCategory,
-                          pValue: selectedValues.first,
+                          pValue: selectedValue!,
                         ),
                       ),
                     );
