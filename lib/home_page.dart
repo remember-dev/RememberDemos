@@ -24,6 +24,7 @@ import 'package:remember_demos/demos/planning/planning_values_1.dart';
 import 'package:remember_demos/demos/folders_and_priorities/tasks_with_priority.dart';
 import 'package:remember_demos/demos/folders_and_priorities/tasks_with_priority_reorderable.dart';
 import 'package:remember_demos/demos/planning/planning_values_2.dart';
+import 'package:remember_demos/demos/planning_process_3/planning_home_3.dart';
 import 'package:remember_demos/demos/planning_process_3/planning_values_3.dart';
 import 'package:remember_demos/demos/task_creation/quick_task_bar_1.dart';
 import 'package:remember_demos/demos/task_creation/quick_task_bar_2.dart';
@@ -74,6 +75,33 @@ class _HomePageState extends State<HomePage> {
                 style: mediumPrimary,
               ),
               const SizedBox(height: 32),
+
+              //
+              title("Planning Process"),
+              const SizedBox(height: 16),
+              thing(
+                "Planning Process 1 (current)",
+                PlanningValues1(),
+                "The current planning process as of March 7th, 2025",
+              ),
+              thing(
+                "Planning Process 2",
+                PlanningValues2(),
+                "Planning process with no selection limits on values/goals/tasks. "
+                    "(Max screens ≈200) (min screens 3). 'Depth-First-Traversal' going "
+                    "from Value->Goal->Task->(to next goal/value)",
+              ),
+              thing(
+                "Planning Process 3 - Stacie",
+                PlanningValues3(),
+                "Planning process according to Stacie's Feedback",
+              ),
+              thing(
+                "Planning Home 3 - Stacie",
+                PlanningHome3(),
+                "Planning process home screen according to Stacie's Feedback",
+              ),
+              const SizedBox(height: 16),
 
               //
               title("Folders and Prioritization"),
@@ -207,28 +235,6 @@ class _HomePageState extends State<HomePage> {
                 "Onboarding 3",
                 Onboarding_3_1(),
                 "The idea that Heidi has in FreeForm.",
-              ),
-              const SizedBox(height: 16),
-
-              //
-              title("Planning Process"),
-              const SizedBox(height: 16),
-              thing(
-                "Planning Process 1 (current)",
-                PlanningValues1(),
-                "The current planning process as of March 7th, 2025",
-              ),
-              thing(
-                "Planning Process 2",
-                PlanningValues2(),
-                "Planning process with no selection limits on values/goals/tasks. "
-                    "(Max screens ≈200) (min screens 3). 'Depth-First-Traversal' going "
-                    "from Value->Goal->Task->(to next goal/value)",
-              ),
-              thing(
-                "Planning Process 3 - Stacie",
-                PlanningValues3(),
-                "Planning process according to Stacie's Feedback",
               ),
               const SizedBox(height: 16),
 

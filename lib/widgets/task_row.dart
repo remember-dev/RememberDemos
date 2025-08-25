@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_guid/flutter_guid.dart';
 import 'package:intl/intl.dart';
 import 'package:remember_demos/entities/basic_task.dart';
 import 'package:remember_demos/text_styles.dart';
@@ -15,16 +16,21 @@ TaskRow randomTaskRow(Key k,
 }
 
 TaskRow randomAiSuggestion(
-    {String? title, Color? color, int? priority, bool? completed}) {
+    {String? title,
+    Color? color,
+    int? priority,
+    bool? completed,
+    Function(BasicTask)? onAiSuggestionPressed}) {
+  final t = randomBasicTask(
+    taskTitle: title,
+    priority: priority,
+    color: color,
+    completed: completed,
+  );
   return TaskRow.fromBasicTask(
-    randomBasicTask(
-      taskTitle: title,
-      priority: priority,
-      color: color,
-      completed: completed,
-    ),
+    t,
     isAiSuggestion: true,
-    onAiSuggestionPressed: () {},
+    onAiSuggestionPressed: onAiSuggestionPressed,
   );
 }
 
@@ -43,7 +49,7 @@ class TaskRow extends StatelessWidget {
   final VoidCallback? onChecked;
   final GlobalKey? globalKeyForCelebrations;
   final bool isAiSuggestion;
-  final VoidCallback? onAiSuggestionPressed;
+  final Function(BasicTask)? onAiSuggestionPressed;
 
   const TaskRow({
     super.key,
@@ -69,7 +75,7 @@ class TaskRow extends StatelessWidget {
     bool showStartAndEndTimes = false,
     TextStyle? scheduledTimeStyle,
     bool isAiSuggestion = false,
-    VoidCallback? onAiSuggestionPressed,
+    Function(BasicTask)? onAiSuggestionPressed,
   }) {
     return TaskRow(
       title: task.taskTitle,
@@ -128,7 +134,21 @@ class TaskRow extends StatelessWidget {
           title: Text(title, style: regularPrimary),
           trailing: isAiSuggestion
               ? TextButton.icon(
-                  onPressed: onAiSuggestionPressed,
+                  onPressed: () => onAiSuggestionPressed?.call(BasicTask(
+                    id: Guid.newGuid,
+                    lastModified: DateTime.now(),
+                    userId: Guid.newGuid,
+                    scheduledTime: scheduledTime,
+                    taskTitle: title,
+                    completed: completed,
+                    archived: false,
+                    isDeleted: false,
+                    isGoalTask: true,
+                    isDelegatedTask: false,
+                    color: color,
+                    priority: priority,
+                    orderGroup: 0,
+                  )),
                   label: Text("Add"),
                   icon: Icon(Icons.add),
                 )

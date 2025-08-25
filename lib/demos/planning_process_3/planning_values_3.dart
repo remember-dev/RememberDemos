@@ -77,6 +77,8 @@ class _PlanningValues3State extends State<PlanningValues3> {
             onPressed: selectedValue == null
                 ? null
                 : () {
+                    Planning3DataStore.planningStep = PlanningStep.Values;
+
                     Navigator.push(
                       context,
                       MaterialPageRoute(

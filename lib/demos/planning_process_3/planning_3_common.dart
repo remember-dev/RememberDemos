@@ -4,6 +4,8 @@
 
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:remember_demos/entities/basic_task.dart';
 import 'package:remember_demos/entities/category.dart';
 import 'package:remember_demos/entities/goal.dart';
 import 'package:remember_demos/entities/personal_value.dart';
@@ -11,6 +13,14 @@ import 'package:remember_demos/entities/services.dart';
 import 'package:remember_demos/text_styles.dart';
 import 'package:remember_demos/theme.dart';
 import 'package:remember_demos/widgets/button.dart';
+
+class Planning3DataStore {
+  static List<BasicTask> tasks = [];
+  static List<Goal> goals = [];
+  static List<PersonalValue> values = [];
+
+  static PlanningStep planningStep = PlanningStep.Values;
+}
 
 Widget planningTitleThing() {
   return Center(
@@ -288,4 +298,136 @@ Widget bottomButtons() {
       ),
     ],
   );
+}
+
+Widget valueReport(PersonalValue value) {
+  final planningStep = Planning3DataStore.planningStep;
+  Goal? goal;
+  List<BasicTask> tasks = [];
+
+  if (planningStep.index >= PlanningStep.Goals.index) {
+    goal = Planning3DataStore.goals
+        .where((g) => g.valueId == value.id)
+        .shuffled()
+        .first;
+  }
+
+  if (planningStep.index >= PlanningStep.Tasks.index) {
+    tasks =
+        Planning3DataStore.tasks.where((t) => t.goalId == goal?.id).toList();
+  }
+
+  return Card(
+    elevation: 1,
+    shadowColor: Colors.grey,
+    color: Colors.white,
+    child: Column(
+      children: [
+        Card(
+          margin: EdgeInsets.all(0),
+          color: value.color.withAlpha(0x33),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        value.title,
+                        style: boldPrimary.copyWith(fontSize: 12),
+                      ),
+                      if (goal != null)
+                        Text(
+                          goal.title,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: regularPrimary.copyWith(fontSize: 18),
+                        ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(20, 4, 8, 4),
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    child: Text("Edit"),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              ...tasks.map((t) {
+                return Row(
+                  children: [
+                    Text(t.taskTitle),
+                    Spacer(),
+                    t.scheduledTime == null
+                        ? Text(
+                            "Unscheduled",
+                            style: regularPrimary.copyWith(
+                                color: Colors.grey.shade600),
+                          )
+                        : Text(
+                            DateFormat.MMMd().add_jm().format(t.scheduledTime!),
+                            style: regularPrimary.copyWith(
+                                color: Colors.grey.shade600),
+                          ),
+                  ],
+                );
+              })
+            ],
+          ),
+        ),
+
+        //
+        if (planningStep == PlanningStep.Values)
+          ElevatedButton(onPressed: () {}, child: Text("Set Goal"))
+        else if (planningStep == PlanningStep.Goals ||
+            planningStep == PlanningStep.Tasks && tasks.isEmpty)
+          ElevatedButton(
+              onPressed: () {}, child: Text("Continue Planning Tasks")),
+        //
+
+        SizedBox(height: 12),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 20),
+          child: _Planning3ProgressIndicator(
+              step: planningStep, personalValue: value),
+        ),
+        Text(
+          planningStep.index == PlanningStep.values.length - 1
+              ? "Planning complete!"
+              : "${planningStep.index + 1} of ${PlanningStep.values.length} steps completed",
+          style: lightPrimary.copyWith(fontSize: 10),
+        ),
+        SizedBox(height: 8),
+      ],
+    ),
+  );
+}
+
+class _Planning3ProgressIndicator extends StatelessWidget {
+  final PlanningStep step;
+  final PersonalValue personalValue;
+
+  const _Planning3ProgressIndicator({
+    required this.step,
+    required this.personalValue,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return LinearProgressIndicator(
+      value: (step.index + 1) / PlanningStep.values.length,
+      color: personalValue.color,
+    );
+  }
 }

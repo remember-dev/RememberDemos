@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:remember_demos/demos/planning_process_3/planning_3_common.dart';
+import 'package:remember_demos/demos/planning_process_3/planning_home_3.dart';
+import 'package:remember_demos/entities/basic_task.dart';
 import 'package:remember_demos/entities/category.dart';
 import 'package:remember_demos/entities/goal.dart';
 import 'package:remember_demos/entities/personal_value.dart';
@@ -24,7 +26,7 @@ class PlanningTasks3 extends StatefulWidget {
 }
 
 class _PlanningTasks3State extends State<PlanningTasks3> {
-  Goal? selectedGoal;
+  List<BasicTask> tasks = [];
 
   @override
   Widget build(BuildContext context) {
@@ -55,13 +57,29 @@ class _PlanningTasks3State extends State<PlanningTasks3> {
               "Finally, create some tasks that will help you progress in you goal to ${widget.goal.title}.",
             ),
             Expanded(
-              child: Column(
-                children: List.generate(
-                  5,
-                  (i) => randomAiSuggestion(
-                    color: widget.goal.color,
-                    completed: false,
-                    priority: i,
+              child: SingleChildScrollView(
+                child: Column(
+                  children: tasks.map((t) => TaskRow.fromBasicTask(t)).toList(),
+                ),
+              ),
+            ),
+            SizedBox(height: 16),
+            SizedBox(
+              height: 150,
+              child: SingleChildScrollView(
+                child: Column(
+                  children: List.generate(
+                    5,
+                    (i) => randomAiSuggestion(
+                      color: widget.goal.color,
+                      completed: false,
+                      priority: i,
+                      onAiSuggestionPressed: (task) {
+                        setState(() {
+                          tasks.add(task..goalId = widget.goal.id);
+                        });
+                      },
+                    ),
                   ),
                 ),
               ),
@@ -76,18 +94,19 @@ class _PlanningTasks3State extends State<PlanningTasks3> {
       bottomNavigationBar: GenericBottomAppBar(
         children: [
           ElevatedButton(
-            onPressed: selectedGoal == null
-                ? null
-                : () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (_) => PlanningTasks3(
-                    //       goal: selectedGoal!,
-                    //     ),
-                    //   ),
-                    // );
-                  },
+            onPressed: () {
+              Planning3DataStore.values.add(widget.pValue);
+              Planning3DataStore.goals.add(widget.goal);
+              Planning3DataStore.tasks.addAll(tasks);
+              Planning3DataStore.planningStep = PlanningStep.Tasks;
+
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => PlanningHome3(),
+                ),
+              );
+            },
             child: Text("Next"),
           ),
         ],

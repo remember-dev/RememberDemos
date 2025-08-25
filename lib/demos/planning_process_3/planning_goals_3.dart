@@ -70,6 +70,8 @@ class _PlanningGoals3State extends State<PlanningGoals3> {
             onPressed: selectedGoal == null
                 ? null
                 : () {
+                    Planning3DataStore.planningStep = PlanningStep.Goals;
+
                     Navigator.push(
                       context,
                       MaterialPageRoute(

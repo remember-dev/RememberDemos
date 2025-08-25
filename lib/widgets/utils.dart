@@ -131,7 +131,6 @@ BasicTask randomBasicTask({
     id: id,
     lastModified: DateTime.timestamp(),
     userId: userId ?? Guid.newGuid,
-    // Random time from now to three days from now
     scheduledTime: scheduledTime,
     taskTitle: taskTitle ?? randomTitle,
     completed: completed ?? rand.nextBool(),
