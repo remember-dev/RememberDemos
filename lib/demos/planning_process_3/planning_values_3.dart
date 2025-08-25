@@ -33,6 +33,7 @@ class _PlanningValues3State extends State<PlanningValues3> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            RememberPlanning3TopBar(step: PlanningStep.Values),
             whiteAreaWithText(
               "Think about what matters to you - then tap a category and choose one value to begin",
             ),

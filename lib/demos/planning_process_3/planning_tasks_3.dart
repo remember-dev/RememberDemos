@@ -5,6 +5,7 @@ import 'package:remember_demos/entities/goal.dart';
 import 'package:remember_demos/entities/personal_value.dart';
 import 'package:remember_demos/text_styles.dart';
 import 'package:remember_demos/widgets/generic_bottom_app_bar.dart';
+import 'package:remember_demos/widgets/task_row.dart';
 
 class PlanningTasks3 extends StatefulWidget {
   final Category category;
@@ -40,6 +41,7 @@ class _PlanningTasks3State extends State<PlanningTasks3> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            RememberPlanning3TopBar(step: PlanningStep.Tasks),
             Wrap(
               spacing: 8,
               runSpacing: 8,
@@ -52,7 +54,18 @@ class _PlanningTasks3State extends State<PlanningTasks3> {
             whiteAreaWithText(
               "Finally, create some tasks that will help you progress in you goal to ${widget.goal.title}.",
             ),
-            const Spacer(),
+            Expanded(
+              child: Column(
+                children: List.generate(
+                  5,
+                  (i) => randomAiSuggestion(
+                    color: widget.goal.color,
+                    completed: false,
+                    priority: i,
+                  ),
+                ),
+              ),
+            ),
             planningDivider(),
             const SizedBox(height: 8),
             bottomButtons(),

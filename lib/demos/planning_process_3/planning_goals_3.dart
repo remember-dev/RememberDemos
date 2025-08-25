@@ -39,6 +39,7 @@ class _PlanningGoals3State extends State<PlanningGoals3> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            RememberPlanning3TopBar(step: PlanningStep.Goals),
             whiteAreaWithText(
               "Now that you’ve chosen to work on ${widget.pValue.title}, select a goal that will support that value.",
             ),

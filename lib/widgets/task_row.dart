@@ -4,12 +4,28 @@ import 'package:remember_demos/entities/basic_task.dart';
 import 'package:remember_demos/text_styles.dart';
 import 'package:remember_demos/widgets/utils.dart';
 
-TaskRow randomTaskRow(Key k, {String? title, Color? color, int? priority}) {
+TaskRow randomTaskRow(Key k,
+    {String? title, Color? color, int? priority, bool? completed}) {
   return TaskRow.fromBasicTask(randomBasicTask(
     taskTitle: title,
     priority: priority,
     color: color,
+    completed: completed,
   ));
+}
+
+TaskRow randomAiSuggestion(
+    {String? title, Color? color, int? priority, bool? completed}) {
+  return TaskRow.fromBasicTask(
+    randomBasicTask(
+      taskTitle: title,
+      priority: priority,
+      color: color,
+      completed: completed,
+    ),
+    isAiSuggestion: true,
+    onAiSuggestionPressed: () {},
+  );
 }
 
 class TaskRow extends StatelessWidget {
@@ -26,6 +42,8 @@ class TaskRow extends StatelessWidget {
   final TextStyle? scheduledTimeStyle;
   final VoidCallback? onChecked;
   final GlobalKey? globalKeyForCelebrations;
+  final bool isAiSuggestion;
+  final VoidCallback? onAiSuggestionPressed;
 
   const TaskRow({
     super.key,
@@ -41,6 +59,8 @@ class TaskRow extends StatelessWidget {
     this.scheduledTimeStyle,
     this.onChecked,
     this.globalKeyForCelebrations,
+    this.isAiSuggestion = false,
+    this.onAiSuggestionPressed,
   });
 
   static TaskRow fromBasicTask(
@@ -48,6 +68,8 @@ class TaskRow extends StatelessWidget {
     bool forceOffScheduledTime = false,
     bool showStartAndEndTimes = false,
     TextStyle? scheduledTimeStyle,
+    bool isAiSuggestion = false,
+    VoidCallback? onAiSuggestionPressed,
   }) {
     return TaskRow(
       title: task.taskTitle,
@@ -59,6 +81,8 @@ class TaskRow extends StatelessWidget {
       forceOffScheduledTime: forceOffScheduledTime,
       showStartAndEndTimes: showStartAndEndTimes,
       scheduledTimeStyle: scheduledTimeStyle,
+      isAiSuggestion: isAiSuggestion,
+      onAiSuggestionPressed: onAiSuggestionPressed,
     );
   }
 
@@ -87,40 +111,53 @@ class TaskRow extends StatelessWidget {
           // visualDensity: VisualDensity(vertical: allDayTask ? -4 : 0),
           tileColor: Colors.white,
           contentPadding: EdgeInsets.only(right: 12),
-          leading: Transform.scale(
-            key: globalKeyForCelebrations,
-            scale: 1.2,
-            child: Checkbox.adaptive(
-                value: completed,
-                onChanged: (value) {
-                  onChecked?.call();
-                }),
-          ),
+          leading: isAiSuggestion
+              ? Text(
+                  " ✨",
+                  style: regularPrimary.copyWith(fontSize: 16),
+                )
+              : Transform.scale(
+                  key: globalKeyForCelebrations,
+                  scale: 1.2,
+                  child: Checkbox.adaptive(
+                      value: completed,
+                      onChanged: (value) {
+                        onChecked?.call();
+                      }),
+                ),
           title: Text(title, style: regularPrimary),
-          trailing: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              _priorityLabel(),
-              if (scheduledTime != null &&
-                  !allDayTask &&
-                  !forceOffScheduledTime)
-                Text(
-                  DateFormat('E MMM d h:mm a').format(scheduledTime!),
-                  style: scheduledTimeStyle ?? regularPrimary,
+          trailing: isAiSuggestion
+              ? TextButton.icon(
+                  onPressed: onAiSuggestionPressed,
+                  label: Text("Add"),
+                  icon: Icon(Icons.add),
+                )
+              : Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    _priorityLabel(),
+                    if (scheduledTime != null &&
+                        !allDayTask &&
+                        !forceOffScheduledTime)
+                      Text(
+                        DateFormat('E MMM d h:mm a').format(scheduledTime!),
+                        style: scheduledTimeStyle ?? regularPrimary,
+                      ),
+                    if (scheduledTime != null &&
+                        allDayTask &&
+                        !forceOffScheduledTime)
+                      Text(
+                        DateFormat('E MMM d').format(scheduledTime!),
+                        style: scheduledTimeStyle ?? regularPrimary,
+                      ),
+                    if (showStartAndEndTimes)
+                      Text(
+                        "${DateFormat('h:mm a').format(scheduledTime!)} - ${DateFormat('h:mm a').format(scheduledTime!.add(Duration(minutes: duration ?? 60)))}",
+                        style: scheduledTimeStyle ?? regularPrimary,
+                      ),
+                  ],
                 ),
-              if (scheduledTime != null && allDayTask && !forceOffScheduledTime)
-                Text(
-                  DateFormat('E MMM d').format(scheduledTime!),
-                  style: scheduledTimeStyle ?? regularPrimary,
-                ),
-              if (showStartAndEndTimes)
-                Text(
-                  "${DateFormat('h:mm a').format(scheduledTime!)} - ${DateFormat('h:mm a').format(scheduledTime!.add(Duration(minutes: duration ?? 60)))}",
-                  style: scheduledTimeStyle ?? regularPrimary,
-                ),
-            ],
-          ),
         ),
       ),
     );

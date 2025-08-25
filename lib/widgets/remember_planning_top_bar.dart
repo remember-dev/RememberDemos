@@ -3,7 +3,7 @@ import 'package:remember_demos/text_styles.dart';
 import 'package:remember_demos/widgets/step_progress_view.dart';
 import 'package:remember_demos/widgets/custom_style_arrow.dart';
 
-class RememberPlanningTopBar extends StatefulWidget
+class RememberPlanningTopBar extends StatelessWidget
     implements PreferredSizeWidget {
   final List<String> titles;
   final List<TextSpan> textSpans;
@@ -20,13 +20,6 @@ class RememberPlanningTopBar extends StatefulWidget
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 
   @override
-  State<StatefulWidget> createState() => _RememberPlanningTopBarState();
-}
-
-class _RememberPlanningTopBarState extends State<RememberPlanningTopBar> {
-  _RememberPlanningTopBarState();
-
-  @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -35,8 +28,8 @@ class _RememberPlanningTopBarState extends State<RememberPlanningTopBar> {
           padding: const EdgeInsets.symmetric(horizontal: 48),
           child: Center(
             child: StepProgressView(
-              curStep: widget.currentStep,
-              titles: widget.titles,
+              curStep: currentStep,
+              titles: titles,
             ),
           ),
         ),
@@ -46,7 +39,7 @@ class _RememberPlanningTopBarState extends State<RememberPlanningTopBar> {
           child: CustomPaint(
             foregroundPainter: CustomStyleArrow(
               totalSteps: 3,
-              currentStep: widget.currentStep,
+              currentStep: currentStep,
             ),
           ),
         ),
@@ -71,7 +64,7 @@ class _RememberPlanningTopBarState extends State<RememberPlanningTopBar> {
               text: TextSpan(
                 style:
                     regularPrimary.copyWith(fontSize: 20, color: Colors.black),
-                children: widget.textSpans,
+                children: textSpans,
               ),
             ),
           ),

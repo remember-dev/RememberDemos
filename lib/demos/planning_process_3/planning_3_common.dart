@@ -2,6 +2,7 @@
 // Widgets to use for the whole PlanningProcess3 so that when I put it into the app it's already good to go.
 //
 
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:remember_demos/entities/category.dart';
 import 'package:remember_demos/entities/goal.dart';
@@ -18,6 +19,97 @@ Widget planningTitleThing() {
       style: regularPrimary.copyWith(fontSize: 20),
     ),
   );
+}
+
+enum PlanningStep { Values, Goals, Tasks }
+
+class RememberPlanning3TopBar extends StatelessWidget {
+  final List<String> titles = PlanningStep.values.map((v) => v.name).toList();
+  final PlanningStep step;
+  final Color activeColor = Colors.black;
+  final Color inactiveColor = Colors.white;
+
+  RememberPlanning3TopBar({
+    super.key,
+    required this.step,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 48),
+          child: Center(
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: _iconViews(),
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    ...titles.mapIndexed(
+                      (i, text) => Text(
+                        text,
+                        style: step.index == i
+                            ? semiBoldPrimary.copyWith(fontSize: 12)
+                            : regularPrimary.copyWith(fontSize: 12),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+        const SizedBox(height: 16),
+      ],
+    );
+  }
+
+  List<Widget> _iconViews() {
+    var list = <Widget>[];
+    titles.forEachIndexed((i, _) {
+      var lineColor = step.index > i ? activeColor : inactiveColor;
+      var iconColor = step.index >= i ? activeColor : inactiveColor;
+
+      var icon = Icons.circle_outlined;
+      if (i < step.index) {
+        icon = Icons.check_circle;
+      }
+
+      list.add(
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 4),
+          child: Icon(
+            icon,
+            color: iconColor,
+            size: 15,
+          ),
+        ),
+      );
+
+      if (i != titles.length - 1) {
+        list.add(
+          Expanded(
+            child: Container(
+              height: 3,
+              color: lineColor,
+            ),
+          ),
+        );
+      }
+    });
+
+    return list;
+  }
 }
 
 Widget whiteAreaWithText(String text) {
